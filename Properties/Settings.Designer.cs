@@ -70,5 +70,29 @@ namespace WnetLeisure.Properties {
                 this["WtouchPW"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ftpaddIS600E {
+            get {
+                return ((string)(this["ftpaddIS600E"]));
+            }
+            set {
+                this["ftpaddIS600E"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string devPW {
+            get {
+                return ((string)(this["devPW"]));
+            }
+            set {
+                this["devPW"] = value;
+            }
+        }
     }
 }

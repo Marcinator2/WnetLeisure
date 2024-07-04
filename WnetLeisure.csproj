@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Developeroptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Developeroptions.Designer.cs">
+      <DependentUpon>Developeroptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PortChecker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PortChecker.Designer.cs">
+      <DependentUpon>PortChecker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordDialog.Designer.cs">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormWtouch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,11 +92,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Developeroptions.resx">
+      <DependentUpon>Developeroptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordDialog.resx">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormWtouch.resx">
       <DependentUpon>FormWtouch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormExclIS600E.resx">
       <DependentUpon>FormExclIS600E.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PortChecker.resx">
+      <DependentUpon>PortChecker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PortsInputDialog.resx">
       <DependentUpon>PortsInputDialog.cs</DependentUpon>

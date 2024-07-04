@@ -36,6 +36,7 @@
             this.zugängeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exclusiveIS600EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wtouchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entwickleroptionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.btnPort.Name = "btnPort";
             this.btnPort.Size = new System.Drawing.Size(168, 72);
             this.btnPort.TabIndex = 1;
-            this.btnPort.Text = "Port Tester";
+            this.btnPort.Text = "Port Checker";
             this.btnPort.UseVisualStyleBackColor = true;
             this.btnPort.Click += new System.EventHandler(this.btnPing_Click);
             // 
@@ -63,7 +64,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.einstellungenToolStripMenuItem});
+            this.einstellungenToolStripMenuItem,
+            this.entwickleroptionenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(785, 28);
@@ -84,7 +86,7 @@
             this.exclusiveIS600EToolStripMenuItem,
             this.wtouchToolStripMenuItem});
             this.zugängeToolStripMenuItem.Name = "zugängeToolStripMenuItem";
-            this.zugängeToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
+            this.zugängeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.zugängeToolStripMenuItem.Text = "Zugänge";
             // 
             // exclusiveIS600EToolStripMenuItem
@@ -100,6 +102,13 @@
             this.wtouchToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.wtouchToolStripMenuItem.Text = "Wtouch";
             this.wtouchToolStripMenuItem.Click += new System.EventHandler(this.wtouchToolStripMenuItem_Click);
+            // 
+            // entwickleroptionenToolStripMenuItem
+            // 
+            this.entwickleroptionenToolStripMenuItem.Name = "entwickleroptionenToolStripMenuItem";
+            this.entwickleroptionenToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
+            this.entwickleroptionenToolStripMenuItem.Text = "Entwickleroptionen";
+            this.entwickleroptionenToolStripMenuItem.Click += new System.EventHandler(this.entwickleroptionenToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -136,6 +145,7 @@
         private System.Windows.Forms.ToolStripMenuItem zugängeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exclusiveIS600EToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wtouchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem entwickleroptionenToolStripMenuItem;
     }
 }
 
