@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Developeroptions));
             this.label1 = new System.Windows.Forms.Label();
             this.txtbxFTPaddIS600E = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSaveFTPaddIS600E = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSaveDevPW = new System.Windows.Forms.Button();
             this.txtbxDevPW = new System.Windows.Forms.TextBox();
+            this.btnSaveDevPW = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +88,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Entwicklerpasswort ändern:";
             // 
+            // txtbxDevPW
+            // 
+            this.txtbxDevPW.Location = new System.Drawing.Point(64, 48);
+            this.txtbxDevPW.Name = "txtbxDevPW";
+            this.txtbxDevPW.Size = new System.Drawing.Size(128, 22);
+            this.txtbxDevPW.TabIndex = 7;
+            this.txtbxDevPW.UseSystemPasswordChar = true;
+            // 
             // btnSaveDevPW
             // 
             this.btnSaveDevPW.Location = new System.Drawing.Point(80, 80);
@@ -96,14 +105,6 @@
             this.btnSaveDevPW.Text = "Speichern";
             this.btnSaveDevPW.UseVisualStyleBackColor = true;
             this.btnSaveDevPW.Click += new System.EventHandler(this.btnSaveDevPW_Click);
-            // 
-            // txtbxDevPW
-            // 
-            this.txtbxDevPW.Location = new System.Drawing.Point(64, 48);
-            this.txtbxDevPW.Name = "txtbxDevPW";
-            this.txtbxDevPW.Size = new System.Drawing.Size(128, 22);
-            this.txtbxDevPW.TabIndex = 7;
-            this.txtbxDevPW.UseSystemPasswordChar = true;
             // 
             // Developeroptions
             // 
@@ -115,6 +116,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtbxFTPaddIS600E);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Developeroptions";
             this.Text = "Entwickleroptionen";
             this.Load += new System.EventHandler(this.Developeroptions_Load);

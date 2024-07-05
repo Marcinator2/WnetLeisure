@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWtouch));
             this.btnWTSave = new System.Windows.Forms.Button();
             this.btnWTCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -97,6 +98,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnWTCancel);
             this.Controls.Add(this.btnWTSave);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormWtouch";
             this.Text = "Wtouch Zugang";
             this.Load += new System.EventHandler(this.FormWtouch_Load);
