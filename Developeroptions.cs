@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WnetLeisure
@@ -23,7 +16,7 @@ namespace WnetLeisure
         }
         private void btnSaveFTPaddIS600E_Click(object sender, EventArgs e)
         {
-            // Speichern Sie die Textbox-Werte bevor das Formular geschlossen wird
+            // Speichert die Textbox-Werte bevor das Formular geschlossen wird
             WnetLeisure.Properties.Settings.Default.ftpaddIS600E = txtbxFTPaddIS600E.Text;
             
             WnetLeisure.Properties.Settings.Default.Save();
@@ -36,7 +29,7 @@ namespace WnetLeisure
 
             if (result == DialogResult.Yes)
             {
-                // Speichern Sie die Textbox-Werte bevor das Formular geschlossen wird
+                // Speichert die Textbox-Werte bevor das Formular geschlossen wird
                 WnetLeisure.Properties.Settings.Default.devPW = txtbxDevPW.Text;
                 WnetLeisure.Properties.Settings.Default.Save();
                 MessageBox.Show("Das Entwicklerpasswort wurde geändert!", "Bestätigung", MessageBoxButtons.OK);

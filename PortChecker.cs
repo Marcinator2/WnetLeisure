@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +12,7 @@ namespace WnetLeisure
 {
     public partial class PortChecker : Form
     {
+        
         private CancellationTokenSource _cancellationTokenSource;
 
         public PortChecker()
@@ -24,7 +21,7 @@ namespace WnetLeisure
             this.FormClosing += new FormClosingEventHandler(PortChecker_FormClosing);
         }
 
-        private async void btnStart_Click(object sender, EventArgs e)
+        private async void btnStart_Click(object sender, EventArgs e)//async damit mehrere Tasks gleichzeitig ausgeführt werden können
         {
             btnStart.Enabled = false; // Deaktiviert die Schaltfläche
             _cancellationTokenSource = new CancellationTokenSource();
@@ -32,7 +29,7 @@ namespace WnetLeisure
 
             try
             {
-                await PortTestRun(token);
+                await PortTestRun(token);//führt PortChecker aus
             }
             catch (OperationCanceledException)
             {
@@ -48,7 +45,7 @@ namespace WnetLeisure
                 btnStart.Enabled = true; // Aktiviert die Schaltfläche wieder
             }
         }
-
+        //PortChecker ausführen
         private async Task PortTestRun(CancellationToken token)
         {
             OpenFile OpenFile = new OpenFile();
@@ -70,7 +67,7 @@ namespace WnetLeisure
 
             if (resultFile == null) return;
 
-            await Task.Run(() =>
+            await Task.Run(() => //Startet eine neue Task
             {
                 if (selectedFilePath != null)
                 {
@@ -164,7 +161,7 @@ namespace WnetLeisure
 
         private void PortChecker_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Möchten Sie das Programm wirklich beenden?", "Programm beenden", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Möchten Sie den Port Checker wirklich beenden?", "Port Checker beenden", MessageBoxButtons.OKCancel);
 
             if (result == DialogResult.Cancel)
             {
@@ -175,7 +172,7 @@ namespace WnetLeisure
                 _cancellationTokenSource?.Cancel(); // Abbruch des asynchronen Vorgangs
             }
         }
-
+        //Statuslabel aktualisieren
         private void UpdateStatusLabel(string text)
         {
             if (lblStatus.InvokeRequired)
