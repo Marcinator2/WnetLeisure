@@ -31,10 +31,22 @@ namespace WnetLeisure
 
         private void btnSaveDevPW_Click(object sender, EventArgs e)
         {
-            // Speichern Sie die Textbox-Werte bevor das Formular geschlossen wird
-            WnetLeisure.Properties.Settings.Default.devPW = txtbxDevPW.Text;
+            // Bestätigungsmeldung anzeigen
+            DialogResult result = MessageBox.Show("Möchten Sie die Änderungen wirklich speichern? \nBitte informieren Sie auch Ihre Kollegen über die Änderung!", "Sind Sie sicher???", MessageBoxButtons.YesNo);
 
-            WnetLeisure.Properties.Settings.Default.Save();
+            if (result == DialogResult.Yes)
+            {
+                // Speichern Sie die Textbox-Werte bevor das Formular geschlossen wird
+                WnetLeisure.Properties.Settings.Default.devPW = txtbxDevPW.Text;
+                WnetLeisure.Properties.Settings.Default.Save();
+                MessageBox.Show("Das Entwicklerpasswort wurde geändert!", "Bestätigung", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                // Abbruch der Ausführung
+                return;
+            }
         }
     }
 }

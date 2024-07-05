@@ -76,8 +76,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(730, 164);
+            this.ClientSize = new System.Drawing.Size(501, 138);
             this.Controls.Add(this.lblWrite);
             this.Controls.Add(this.lblRead);
             this.Controls.Add(this.lblStatus);
