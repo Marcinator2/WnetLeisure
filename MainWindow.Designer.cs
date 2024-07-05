@@ -86,7 +86,7 @@
             this.exclusiveIS600EToolStripMenuItem,
             this.wtouchToolStripMenuItem});
             this.zugängeToolStripMenuItem.Name = "zugängeToolStripMenuItem";
-            this.zugängeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.zugängeToolStripMenuItem.Size = new System.Drawing.Size(151, 26);
             this.zugängeToolStripMenuItem.Text = "Zugänge";
             // 
             // exclusiveIS600EToolStripMenuItem
