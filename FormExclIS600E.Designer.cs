@@ -39,7 +39,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(80, 112);
+            this.btnOK.Location = new System.Drawing.Point(80, 104);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(112, 32);
             this.btnOK.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(200, 112);
+            this.btnCancel.Location = new System.Drawing.Point(200, 104);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(104, 32);
             this.btnCancel.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 32);
+            this.label1.Location = new System.Drawing.Point(72, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 16);
             this.label1.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 64);
+            this.label2.Location = new System.Drawing.Point(96, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 16);
             this.label2.TabIndex = 3;
@@ -77,14 +77,14 @@
             // 
             // txtbxUser
             // 
-            this.txtbxUser.Location = new System.Drawing.Point(168, 32);
+            this.txtbxUser.Location = new System.Drawing.Point(168, 24);
             this.txtbxUser.Name = "txtbxUser";
             this.txtbxUser.Size = new System.Drawing.Size(136, 22);
             this.txtbxUser.TabIndex = 4;
             // 
             // txtbxPW
             // 
-            this.txtbxPW.Location = new System.Drawing.Point(168, 64);
+            this.txtbxPW.Location = new System.Drawing.Point(168, 56);
             this.txtbxPW.Name = "txtbxPW";
             this.txtbxPW.Size = new System.Drawing.Size(136, 22);
             this.txtbxPW.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 165);
+            this.ClientSize = new System.Drawing.Size(395, 165);
             this.Controls.Add(this.txtbxPW);
             this.Controls.Add(this.txtbxUser);
             this.Controls.Add(this.label2);

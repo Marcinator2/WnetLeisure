@@ -91,7 +91,7 @@
             // 
             // FormWtouch
             // 
-            this.ClientSize = new System.Drawing.Size(466, 198);
+            this.ClientSize = new System.Drawing.Size(331, 172);
             this.Controls.Add(this.txtbxWTPW);
             this.Controls.Add(this.txtbxWTUser);
             this.Controls.Add(this.label4);

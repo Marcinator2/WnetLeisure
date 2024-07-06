@@ -63,6 +63,16 @@ namespace WnetLeisure.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap W_NETLeisureohneBG {
+            get {
+                object obj = ResourceManager.GetObject("W-NETLeisureohneBG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap W_NETohneBG {
             get {
                 object obj = ResourceManager.GetObject("W-NETohneBG", resourceCulture);

@@ -18,50 +18,11 @@ namespace WnetLeisure
         }
   
 
-        private void btnBackende_Click(object sender, EventArgs e)
+        private void btnStartIS600EKonfiMngr_Click(object sender, EventArgs e)
         {
-            string filePath = "600e.ini";
-            string section = "[OPTIONS]";
-            bool sectionFound = false;
+            FormIS600EKonfiMngr formIS600EKonfiMngr = new FormIS600EKonfiMngr();
+            formIS600EKonfiMngr.Show();
 
-            // Überprüfe, ob die Datei existiert
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("Die Datei existiert nicht.");
-                return;
-            }
-
-            // Lade den Inhalt der Datei
-            string[] lines = File.ReadAllLines(filePath);
-            StringBuilder sb = new StringBuilder();
-
-            // Suche nach der Sektion [OPTIONS]
-            foreach (string line in lines)
-            {
-                if (line.Trim().Equals(section, StringComparison.OrdinalIgnoreCase))
-                {
-                    sectionFound = true;
-                }
-                sb.AppendLine(line);
-            }
-
-            // Falls die Sektion [OPTIONS] nicht gefunden wurde, füge sie hinzu
-            if (!sectionFound)
-            {
-                sb.AppendLine(section);
-            }
-
-            // Speichere den aktualisierten Inhalt in die Datei
-            File.WriteAllText(filePath, sb.ToString());
-
-            if (sectionFound)
-            {
-                Console.WriteLine("Die Sektion [OPTIONS] wurde gefunden.");
-            }
-            else
-            {
-                Console.WriteLine("Die Sektion [OPTIONS] wurde hinzugefügt.");
-            }
         }
 
         private void btnPing_Click(object sender, EventArgs e)
@@ -113,6 +74,12 @@ namespace WnetLeisure
             string storedPassword = WnetLeisure.Properties.Settings.Default.devPW;
 
             return enteredPassword == storedPassword;
+        }
+
+        private void überWNETLeisuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox1 AboutBox1 = new AboutBox1();
+            AboutBox1.Show();
         }
     }
 

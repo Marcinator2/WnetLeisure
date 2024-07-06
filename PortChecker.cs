@@ -52,8 +52,8 @@ namespace WnetLeisure
 
             string selectedFilePath = OpenFile.ShowOpenCsvFileDialog();
             lblRead.Text = "IP-Liste wird gelesen von: " + selectedFilePath;
-            string saveFileName = Path.GetFileNameWithoutExtension(selectedFilePath) + "_result.csv";
 
+            string saveFileName = Path.GetFileNameWithoutExtension(selectedFilePath) + "_result.csv";
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = saveFileName;
 
