@@ -15,7 +15,6 @@ namespace WnetLeisure
 {
     public partial class FormIS600EKonfiMngr : Form
     {
-
         private CancellationTokenSource cancellationTokenSource;
 
         private List<string> ipList = new List<string>(); // Liste der IP-Adressen
@@ -49,6 +48,9 @@ namespace WnetLeisure
 
             lblIPList.Text = "IP-Liste wird gelesen von: " + ipListFilePath;
 
+            // Leere die ipList bevor neue IP-Adressen hinzugefügt werden
+            ipList.Clear();
+
             using (var reader = new StreamReader(ipListFilePath))
             {
                 while (!reader.EndOfStream)
@@ -64,8 +66,11 @@ namespace WnetLeisure
             string logFileName = Path.GetFileNameWithoutExtension(ipListFilePath) + "_LOG.csv";
             string logDirectory = Path.GetDirectoryName(ipListFilePath);
             logFilePath = Path.Combine(logDirectory, logFileName);
-        }
 
+            // Setze das Maximum der ProgressBar auf die Anzahl der IP-Adressen
+            prgsBrTrans.Maximum = ipList.Count;
+            prgsBrTrans.Value = 0; // Setze den aktuellen Wert auf 0
+        }
 
         private async void btnTransfer_Click(object sender, EventArgs e)
         {
@@ -83,6 +88,8 @@ namespace WnetLeisure
                 await Task.Run(() =>
                 {
                     List<TransferResult> results = new List<TransferResult>();
+                    int progress = 0; // Initialisiere den Fortschritt
+
                     foreach (string singleIP in ipList)
                     {
                         if (token.IsCancellationRequested)
@@ -90,6 +97,13 @@ namespace WnetLeisure
 
                         TransferResult result = Transfer(singleIP, token);
                         results.Add(result);
+
+                        // Aktualisieren der ProgressBar
+                        this.Invoke((MethodInvoker)(() =>
+                        {
+                            progress++;
+                            prgsBrTrans.Value = progress;
+                        }));
                     }
 
                     LogResultsToCsv(results);
@@ -106,10 +120,6 @@ namespace WnetLeisure
                 btnTransfer.Enabled = true;
                 btnLoadIPList.Enabled = true;
             }
-
-            // Aktivieren der Schaltflächen nach Abschluss des Tasks
-            btnTransfer.Enabled = true;
-            btnLoadIPList.Enabled = true;
         }
 
         private TransferResult Transfer(string singleIP, CancellationToken token) // gibt TransferResult zurück
@@ -156,12 +166,10 @@ namespace WnetLeisure
             {
                 // Wenn Abbruch angefordert wurde, wird eine Ausnahme geworfen
                 Console.WriteLine("Transfer wurde abgebrochen.");
-            
             }
 
             return result;
         }
-
 
         static bool DownloadFile(string ftpServer, string filePath, string username, string password, string localFilePath)
         {
@@ -298,7 +306,6 @@ namespace WnetLeisure
             // Write the updated content back to the file
             File.WriteAllLines(localFilePath, newLines.ToArray());
         }
-
 
         static bool UploadFile(string ftpServer, string filePath, string username, string password, string localFilePath)
         {
