@@ -67,12 +67,14 @@ namespace WnetLeisure
 
             if (resultFile == null) return;
 
-            await Task.Run(() => //Startet eine neue Task
+            await Task.Run(() =>
             {
                 if (selectedFilePath != null)
                 {
                     try
                     {
+                        int totalLines = File.ReadLines(selectedFilePath).Count(); // Anzahl der Zeilen zählen
+
                         using (var reader = new StreamReader(selectedFilePath))
                         using (var writer = new StreamWriter(resultFile))
                         {
@@ -89,6 +91,15 @@ namespace WnetLeisure
                                     writer.Write("Port {0};", portsToCheck[i]);
                                 }
                                 writer.WriteLine();
+
+                                // Initialize ProgressBar
+                                Invoke(new Action(() =>
+                                {
+                                    prgrsBarPing.Maximum = totalLines;
+                                    prgrsBarPing.Value = 0;
+                                }));
+
+                                int currentLine = 0;
 
                                 while (!reader.EndOfStream)
                                 {
@@ -142,7 +153,14 @@ namespace WnetLeisure
                                     }
 
                                     writer.WriteLine(portStatus);
+
+                                    // Update ProgressBar
+                                    currentLine++;
+                                    Invoke(new Action(() => prgrsBarPing.Value = currentLine));
                                 }
+
+                                // Reset ProgressBar
+                                Invoke(new Action(() => prgrsBarPing.Value = 0));
                             }
                         }
                     }
@@ -154,10 +172,11 @@ namespace WnetLeisure
                     {
                         MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
                     }
-                UpdateStatusLabel("Fäddisch!");
+                    UpdateStatusLabel("Fäddisch!");
                 }
             }, token);
         }
+
 
         private void PortChecker_FormClosing(object sender, FormClosingEventArgs e)
         {
