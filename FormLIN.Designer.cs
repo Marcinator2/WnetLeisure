@@ -31,6 +31,8 @@
             this.txtBxServer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLINladen = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.prgrsBrFortschritt = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // txtBxServer
@@ -60,11 +62,19 @@
             this.btnLINladen.UseVisualStyleBackColor = true;
             this.btnLINladen.Click += new System.EventHandler(this.btnLINladen_Click);
             // 
+            // prgrsBrFortschritt
+            // 
+            this.prgrsBrFortschritt.Location = new System.Drawing.Point(128, 97);
+            this.prgrsBrFortschritt.Name = "prgrsBrFortschritt";
+            this.prgrsBrFortschritt.Size = new System.Drawing.Size(288, 29);
+            this.prgrsBrFortschritt.TabIndex = 3;
+            // 
             // FormLIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.prgrsBrFortschritt);
             this.Controls.Add(this.btnLINladen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBxServer);
@@ -80,5 +90,7 @@
         private System.Windows.Forms.TextBox txtBxServer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLINladen;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.ProgressBar prgrsBrFortschritt;
     }
 }

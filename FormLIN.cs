@@ -19,7 +19,7 @@ namespace WnetLeisure
             InitializeComponent();
         }
 
-        private void btnLINladen_Click(object sender, EventArgs e)
+        private async void btnLINladen_Click(object sender, EventArgs e)
         {
             // Öffnen des Datei-Dialogs
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -46,61 +46,78 @@ namespace WnetLeisure
                             connectionString = $"Server={serverAddress};User ID={formAuth.Username};Password={formAuth.Password};";
                         }
 
-                        // Lesen der CSV-Datei
-                        List<string[]> csvData = new List<string[]>();
-                        using (StreamReader sr = new StreamReader(filePath))
-                        {
-                            string line;
-                            while ((line = sr.ReadLine()) != null)
-                            {
-                                csvData.Add(line.Split(';'));
-                            }
-                        }
-
-                        // Verbindung zum SQL Server
-                        using (SqlConnection connection = new SqlConnection(connectionString))
-                        {
-                            connection.Open();
-
-                            // Überprüfen, ob die Datenbank existiert
-                            string checkDatabaseQuery = "IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'wnet_LIN') CREATE DATABASE wnet_LIN";
-                            using (SqlCommand command = new SqlCommand(checkDatabaseQuery, connection))
-                            {
-                                command.ExecuteNonQuery();
-                            }
-
-                            // Verbindung zur wnet_LIN Datenbank
-                            connection.ChangeDatabase("wnet_LIN");
-
-                            // Überprüfen, ob die Tabelle existiert und erstellen falls nicht
-                            string createTableQuery = @"
-                                IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'SNLINBJ')
-                                CREATE TABLE SNLINBJ (
-                                    Seriennummer NVARCHAR(50),
-                                    LIN NVARCHAR(50),
-                                    BJ NVARCHAR(50)
-                                )";
-                            using (SqlCommand command = new SqlCommand(createTableQuery, connection))
-                            {
-                                command.ExecuteNonQuery();
-                            }
-
-                            // Einfügen der Daten in die Tabelle
-                            foreach (var row in csvData.Skip(1)) // Skip header row
-                            {
-                                string insertQuery = "INSERT INTO SNLINBJ (Seriennummer, LIN, BJ) VALUES (@Seriennummer, @LIN, @BJ)";
-                                using (SqlCommand command = new SqlCommand(insertQuery, connection))
-                                {
-                                    command.Parameters.AddWithValue("@Seriennummer", row[0]);
-                                    command.Parameters.AddWithValue("@LIN", row[1]);
-                                    command.Parameters.AddWithValue("@BJ", row[2]);
-                                    command.ExecuteNonQuery();
-                                }
-                            }
-                        }
+                        // Führen Sie die lange laufende Operation asynchron aus
+                        var progress = new Progress<int>(value => prgrsBrFortschritt.Value = value);
+                        await Task.Run(() => ProcessCsvFile(filePath, connectionString, progress));
 
                         MessageBox.Show("CSV data imported successfully.");
                     }
+                }
+            }
+        }
+
+        private void ProcessCsvFile(string filePath, string connectionString, IProgress<int> progress)
+        {
+            // Lesen der CSV-Datei
+            List<string[]> csvData = new List<string[]>();
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    csvData.Add(line.Split(';'));
+                }
+            }
+
+            // Verbindung zum SQL Server
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Überprüfen, ob die Datenbank existiert
+                string checkDatabaseQuery = "IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'wnet_LIN') CREATE DATABASE wnet_LIN";
+                using (SqlCommand command = new SqlCommand(checkDatabaseQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                // Verbindung zur wnet_LIN Datenbank
+                connection.ChangeDatabase("wnet_LIN");
+
+                // Überprüfen, ob die Tabelle existiert und erstellen falls nicht
+                string createTableQuery = @"
+                    IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'SNLINBJ')
+                    CREATE TABLE SNLINBJ (
+                        Seriennummer NVARCHAR(50),
+                        LIN NVARCHAR(50),
+                        BJ NVARCHAR(50)
+                    )";
+                using (SqlCommand command = new SqlCommand(createTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                // Löschen der bestehenden Daten in der Tabelle
+                string deleteDataQuery = "DELETE FROM SNLINBJ";
+                using (SqlCommand command = new SqlCommand(deleteDataQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                // Einfügen der Daten in die Tabelle
+                int rowCount = csvData.Count - 1; // Minus 1 for header
+                for (int i = 1; i < csvData.Count; i++) // Skip header row
+                {
+                    var row = csvData[i];
+                    string insertQuery = "INSERT INTO SNLINBJ (Seriennummer, LIN, BJ) VALUES (@Seriennummer, @LIN, @BJ)";
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@Seriennummer", row[0]);
+                        command.Parameters.AddWithValue("@LIN", row[1]);
+                        command.Parameters.AddWithValue("@BJ", row[2]);
+                        command.ExecuteNonQuery();
+                    }
+                    progress.Report((i * 100) / rowCount);
                 }
             }
         }

@@ -34,5 +34,6 @@ namespace WnetLeisure
             txtBxUsername.Enabled = rbSqlServerAuth.Checked;
             txtBxPassword.Enabled = rbSqlServerAuth.Checked;
         }
+
     }
 }
