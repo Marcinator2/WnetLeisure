@@ -84,6 +84,12 @@
     <Compile Include="FormIS600EKonfiMngr.Designer.cs">
       <DependentUpon>FormIS600EKonfiMngr.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLIN.Designer.cs">
+      <DependentUpon>FormLIN.cs</DependentUpon>
+    </Compile>
     <Compile Include="PortChecker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormIS600EKonfiMngr.resx">
       <DependentUpon>FormIS600EKonfiMngr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLIN.resx">
+      <DependentUpon>FormLIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordDialog.resx">
       <DependentUpon>PasswordDialog.cs</DependentUpon>

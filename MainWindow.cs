@@ -81,6 +81,12 @@ namespace WnetLeisure
             AboutBox1 AboutBox1 = new AboutBox1();
             AboutBox1.Show();
         }
+
+        private void btnLIN_Click(object sender, EventArgs e)
+        {
+            FormLIN formLIN = new FormLIN();
+            formLIN.Show();
+        }
     }
 
 }
