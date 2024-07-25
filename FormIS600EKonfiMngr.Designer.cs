@@ -49,10 +49,10 @@
             // btnLoadIPList
             // 
             this.btnLoadIPList.AutoSize = true;
-            this.btnLoadIPList.Location = new System.Drawing.Point(16, 25);
-            this.btnLoadIPList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoadIPList.Location = new System.Drawing.Point(12, 20);
+            this.btnLoadIPList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLoadIPList.Name = "btnLoadIPList";
-            this.btnLoadIPList.Size = new System.Drawing.Size(136, 39);
+            this.btnLoadIPList.Size = new System.Drawing.Size(102, 32);
             this.btnLoadIPList.TabIndex = 0;
             this.btnLoadIPList.Text = "IP-Liste laden";
             this.btnLoadIPList.UseVisualStyleBackColor = true;
@@ -61,28 +61,30 @@
             // lblIPList
             // 
             this.lblIPList.AutoSize = true;
-            this.lblIPList.Location = new System.Drawing.Point(168, 39);
+            this.lblIPList.Location = new System.Drawing.Point(126, 32);
+            this.lblIPList.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIPList.Name = "lblIPList";
-            this.lblIPList.Size = new System.Drawing.Size(121, 16);
+            this.lblIPList.Size = new System.Drawing.Size(99, 13);
             this.lblIPList.TabIndex = 1;
             this.lblIPList.Text = "Keine Liste gewählt";
             // 
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(3, 0);
+            this.lblPath.Location = new System.Drawing.Point(2, 0);
+            this.lblPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(177, 16);
+            this.lblPath.Size = new System.Drawing.Size(144, 13);
             this.lblPath.TabIndex = 2;
             this.lblPath.Text = "Pfad und Dateiname wählen:";
             // 
             // txtbxPath
             // 
             this.txtbxPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbxPath.Location = new System.Drawing.Point(287, 2);
-            this.txtbxPath.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtbxPath.Location = new System.Drawing.Point(215, 2);
+            this.txtbxPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbxPath.Name = "txtbxPath";
-            this.txtbxPath.Size = new System.Drawing.Size(278, 22);
+            this.txtbxPath.Size = new System.Drawing.Size(209, 20);
             this.txtbxPath.TabIndex = 3;
             this.txtbxPath.Text = "/SETTINGS/SETTING.INI";
             // 
@@ -90,27 +92,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(571, 0);
+            this.label1.Location = new System.Drawing.Point(428, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 68);
+            this.label1.Size = new System.Drawing.Size(158, 55);
             this.label1.TabIndex = 4;
             this.label1.Text = "Beispiel: /SETTINGS/SETTING.INI";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 68);
+            this.label2.Location = new System.Drawing.Point(2, 55);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(260, 16);
+            this.label2.Size = new System.Drawing.Size(208, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Header zum Ändern oder Erstellen wählen:";
             // 
             // txtbxHeader
             // 
-            this.txtbxHeader.Location = new System.Drawing.Point(287, 70);
-            this.txtbxHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtbxHeader.Location = new System.Drawing.Point(215, 57);
+            this.txtbxHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbxHeader.Name = "txtbxHeader";
-            this.txtbxHeader.Size = new System.Drawing.Size(128, 22);
+            this.txtbxHeader.Size = new System.Drawing.Size(97, 20);
             this.txtbxHeader.TabIndex = 6;
             // 
             // tableLayoutPanel1
@@ -118,7 +122,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 216F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 1);
@@ -128,59 +132,62 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtbxEntries, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 89);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 72);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.875F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 103F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 231);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(588, 188);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(571, 128);
+            this.label5.Location = new System.Drawing.Point(428, 103);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 64);
+            this.label5.Size = new System.Drawing.Size(83, 52);
             this.label5.TabIndex = 10;
             this.label5.Text = "Beispiel: \r\nautoswitchoff=1\r\nautoOffHour=20\r\nautoOnHour=1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 128);
+            this.label4.Location = new System.Drawing.Point(2, 103);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(278, 32);
+            this.label4.Size = new System.Drawing.Size(176, 26);
             this.label4.TabIndex = 9;
             this.label4.Text = "Welche Einträge sollen erstellt oder geändert werden?";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(571, 68);
+            this.label3.Location = new System.Drawing.Point(428, 55);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Beispiel: [AutoOff]";
             // 
             // txtbxEntries
             // 
             this.txtbxEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtbxEntries.Location = new System.Drawing.Point(287, 130);
-            this.txtbxEntries.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtbxEntries.Location = new System.Drawing.Point(215, 105);
+            this.txtbxEntries.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbxEntries.Name = "txtbxEntries";
-            this.txtbxEntries.Size = new System.Drawing.Size(278, 99);
+            this.txtbxEntries.Size = new System.Drawing.Size(209, 81);
             this.txtbxEntries.TabIndex = 8;
             this.txtbxEntries.Text = "";
             // 
             // btnTransfer
             // 
-            this.btnTransfer.Location = new System.Drawing.Point(16, 345);
-            this.btnTransfer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTransfer.Location = new System.Drawing.Point(12, 280);
+            this.btnTransfer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTransfer.Name = "btnTransfer";
-            this.btnTransfer.Size = new System.Drawing.Size(144, 23);
+            this.btnTransfer.Size = new System.Drawing.Size(108, 19);
             this.btnTransfer.TabIndex = 8;
             this.btnTransfer.Text = "Übertragung starten";
             this.btnTransfer.UseVisualStyleBackColor = true;
@@ -188,25 +195,26 @@
             // 
             // prgsBrTrans
             // 
-            this.prgsBrTrans.Location = new System.Drawing.Point(184, 344);
+            this.prgsBrTrans.Location = new System.Drawing.Point(138, 280);
+            this.prgsBrTrans.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.prgsBrTrans.Name = "prgsBrTrans";
-            this.prgsBrTrans.Size = new System.Drawing.Size(240, 24);
+            this.prgsBrTrans.Size = new System.Drawing.Size(180, 20);
             this.prgsBrTrans.TabIndex = 9;
             // 
             // FormIS600EKonfiMngr
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.prgsBrTrans);
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblIPList);
             this.Controls.Add(this.btnLoadIPList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormIS600EKonfiMngr";
             this.Text = "IS600E / Exclusive Konfigurations Manager";
             this.tableLayoutPanel1.ResumeLayout(false);

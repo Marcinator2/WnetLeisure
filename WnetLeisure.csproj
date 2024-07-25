@@ -78,6 +78,12 @@
     <Compile Include="Developeroptions.Designer.cs">
       <DependentUpon>Developeroptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuthentication.Designer.cs">
+      <DependentUpon>FormAuthentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormIS600EKonfiMngr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Developeroptions.resx">
       <DependentUpon>Developeroptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAuthentication.resx">
+      <DependentUpon>FormAuthentication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormIS600EKonfiMngr.resx">
       <DependentUpon>FormIS600EKonfiMngr.cs</DependentUpon>
