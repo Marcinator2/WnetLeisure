@@ -47,7 +47,7 @@
             // btnStartIS600EKonfiMngr
             // 
             this.btnStartIS600EKonfiMngr.Location = new System.Drawing.Point(144, 39);
-            this.btnStartIS600EKonfiMngr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnStartIS600EKonfiMngr.Margin = new System.Windows.Forms.Padding(2);
             this.btnStartIS600EKonfiMngr.Name = "btnStartIS600EKonfiMngr";
             this.btnStartIS600EKonfiMngr.Size = new System.Drawing.Size(126, 58);
             this.btnStartIS600EKonfiMngr.TabIndex = 0;
@@ -58,7 +58,7 @@
             // btnPort
             // 
             this.btnPort.Location = new System.Drawing.Point(12, 39);
-            this.btnPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPort.Margin = new System.Windows.Forms.Padding(2);
             this.btnPort.Name = "btnPort";
             this.btnPort.Size = new System.Drawing.Size(126, 58);
             this.btnPort.TabIndex = 1;
@@ -144,7 +144,7 @@
             // 
             this.btnLIN.Location = new System.Drawing.Point(275, 39);
             this.btnLIN.Name = "btnLIN";
-            this.btnLIN.Size = new System.Drawing.Size(123, 57);
+            this.btnLIN.Size = new System.Drawing.Size(123, 58);
             this.btnLIN.TabIndex = 3;
             this.btnLIN.Text = "LINs hochladen";
             this.btnLIN.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindow";
             this.Text = "W-NET Leisure";
             this.Load += new System.EventHandler(this.MainWindow_Load);

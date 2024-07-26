@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAuthentication));
             this.rbWindowsAuth = new System.Windows.Forms.RadioButton();
             this.rbSqlServerAuth = new System.Windows.Forms.RadioButton();
             this.txtBxUsername = new System.Windows.Forms.TextBox();
@@ -40,62 +41,67 @@
             // rbWindowsAuth
             // 
             this.rbWindowsAuth.AutoSize = true;
-            this.rbWindowsAuth.Location = new System.Drawing.Point(92, 60);
+            this.rbWindowsAuth.Checked = true;
+            this.rbWindowsAuth.Location = new System.Drawing.Point(29, 27);
             this.rbWindowsAuth.Name = "rbWindowsAuth";
             this.rbWindowsAuth.Size = new System.Drawing.Size(125, 17);
             this.rbWindowsAuth.TabIndex = 0;
             this.rbWindowsAuth.TabStop = true;
             this.rbWindowsAuth.Text = "Windows Anmeldung";
             this.rbWindowsAuth.UseVisualStyleBackColor = true;
+            this.rbWindowsAuth.CheckedChanged += new System.EventHandler(this.rbWindowsAuth_CheckedChanged);
             // 
             // rbSqlServerAuth
             // 
             this.rbSqlServerAuth.AutoSize = true;
-            this.rbSqlServerAuth.Location = new System.Drawing.Point(92, 95);
+            this.rbSqlServerAuth.Location = new System.Drawing.Point(29, 50);
             this.rbSqlServerAuth.Name = "rbSqlServerAuth";
-            this.rbSqlServerAuth.Size = new System.Drawing.Size(135, 17);
+            this.rbSqlServerAuth.Size = new System.Drawing.Size(136, 17);
             this.rbSqlServerAuth.TabIndex = 1;
-            this.rbSqlServerAuth.TabStop = true;
-            this.rbSqlServerAuth.Text = "SQL Server anmeldung";
+            this.rbSqlServerAuth.Text = "SQL Server Anmeldung";
             this.rbSqlServerAuth.UseVisualStyleBackColor = true;
+            this.rbSqlServerAuth.CheckedChanged += new System.EventHandler(this.rbSqlServerAuth_CheckedChanged);
             // 
             // txtBxUsername
             // 
-            this.txtBxUsername.Location = new System.Drawing.Point(152, 167);
+            this.txtBxUsername.Enabled = false;
+            this.txtBxUsername.Location = new System.Drawing.Point(96, 88);
             this.txtBxUsername.Name = "txtBxUsername";
-            this.txtBxUsername.Size = new System.Drawing.Size(245, 20);
+            this.txtBxUsername.Size = new System.Drawing.Size(159, 20);
             this.txtBxUsername.TabIndex = 2;
             // 
             // txtBxPassword
             // 
-            this.txtBxPassword.Location = new System.Drawing.Point(150, 202);
+            this.txtBxPassword.Enabled = false;
+            this.txtBxPassword.Location = new System.Drawing.Point(95, 114);
             this.txtBxPassword.Name = "txtBxPassword";
-            this.txtBxPassword.Size = new System.Drawing.Size(246, 20);
+            this.txtBxPassword.Size = new System.Drawing.Size(160, 20);
             this.txtBxPassword.TabIndex = 3;
+            this.txtBxPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 167);
+            this.label1.Location = new System.Drawing.Point(26, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Nutzername";
+            this.label1.Text = "Nutzername:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 208);
+            this.label2.Location = new System.Drawing.Point(29, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Passwort";
+            this.label2.Text = "Passwort:";
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(78, 240);
+            this.btnConnect.Location = new System.Drawing.Point(32, 140);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(237, 31);
+            this.btnConnect.Size = new System.Drawing.Size(223, 31);
             this.btnConnect.TabIndex = 6;
             this.btnConnect.Text = "Verbinden";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -105,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(285, 187);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -113,8 +119,10 @@
             this.Controls.Add(this.txtBxUsername);
             this.Controls.Add(this.rbSqlServerAuth);
             this.Controls.Add(this.rbWindowsAuth);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAuthentication";
-            this.Text = "Form1";
+            this.Text = "Server Anmeldung";
+            this.Load += new System.EventHandler(this.FormAuthentication_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

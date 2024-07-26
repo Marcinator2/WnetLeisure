@@ -19,6 +19,12 @@ namespace WnetLeisure
             InitializeComponent();
         }
 
+        private void FormLIN_Load(object sender, EventArgs e)
+        {
+            // Laden des Werts aus den Einstellungen
+            txtBxServer.Text = WnetLeisure.Properties.Settings.Default.SQLServer;
+        }
+
         private async void btnLINladen_Click(object sender, EventArgs e)
         {
             // Öffnen des Datei-Dialogs
@@ -119,7 +125,16 @@ namespace WnetLeisure
                     }
                     progress.Report((i * 100) / rowCount);
                 }
+                MessageBox.Show("LINs hochgeladen.", "Supi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            WnetLeisure.Properties.Settings.Default.SQLServer = txtBxServer.Text;
+            WnetLeisure.Properties.Settings.Default.Save();
+            MessageBox.Show("Einstellungen wurden gespeichert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

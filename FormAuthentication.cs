@@ -17,6 +17,7 @@ namespace WnetLeisure
         private void FormAuthentication_Load(object sender, EventArgs e)
         {
             rbWindowsAuth.Checked = true; // Default to Windows Authentication
+            UpdateAuthenticationControls();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -29,11 +30,21 @@ namespace WnetLeisure
             this.Close();
         }
 
-        private void rbSqlServerAuth_CheckedChanged(object sender, EventArgs e)
+        private void rbWindowsAuth_CheckedChanged(object sender, EventArgs e)
         {
-            txtBxUsername.Enabled = rbSqlServerAuth.Checked;
-            txtBxPassword.Enabled = rbSqlServerAuth.Checked;
+            UpdateAuthenticationControls();
         }
 
+        private void rbSqlServerAuth_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateAuthenticationControls();
+        }
+
+        private void UpdateAuthenticationControls()
+        {
+            bool isSqlServerAuth = rbSqlServerAuth.Checked;
+            txtBxUsername.Enabled = isSqlServerAuth;
+            txtBxPassword.Enabled = isSqlServerAuth;
+        }
     }
 }
