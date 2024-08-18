@@ -75,7 +75,7 @@ namespace WnetLeisure
                 }
 
 
-                MessageBox.Show(config.Oven.TimeZone);
+               // MessageBox.Show(config.Oven.TimeZone);
                 
                 // Populate UI with deserialized data
                 //lblMAC.Text = configService?.MAC;
