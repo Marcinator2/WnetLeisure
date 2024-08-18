@@ -34,6 +34,8 @@ namespace WnetLeisure
             comboBoxOvenNo.SelectedIndex = 0;
             txtBxIPConnect.Text = "10.10.10.150";
             host = txtBxIPConnect.Text;
+            dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 3, 0, 0); // Standart auf 3 uhr
+
         }
 
         private void WTouchKonfiManager_Load(object sender, EventArgs e)
@@ -208,7 +210,7 @@ namespace WnetLeisure
                     command.Execute();
                     if (!string.IsNullOrEmpty(command.Error))
                     {
-                        throw new Exception($"Fehler beim Ausführen des Befehls: {command.Error}");
+                       // throw new Exception($"Fehler beim Ausführen des Befehls: {command.Error}");
                     }
                 }
 
