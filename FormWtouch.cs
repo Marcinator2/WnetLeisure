@@ -17,6 +17,7 @@ namespace WnetLeisure
 
             txtbxWTUser.Text = WnetLeisure.Properties.Settings.Default.WtouchNutzer;
             txtbxWTPW.Text = WnetLeisure.Properties.Settings.Default.WtouchPW;
+            txtBxWTCert.Text = WnetLeisure.Properties.Settings.Default.WTouchCert;
         }
 
         private void btnWTSave_Click(object sender, EventArgs e)
@@ -24,6 +25,7 @@ namespace WnetLeisure
             // Speichern Sie die Textbox-Werte bevor das Formular geschlossen wird
             WnetLeisure.Properties.Settings.Default.WtouchNutzer = txtbxWTUser.Text;
             WnetLeisure.Properties.Settings.Default.WtouchPW = txtbxWTPW.Text;
+            WnetLeisure.Properties.Settings.Default.WTouchCert = txtBxWTCert.Text;
             WnetLeisure.Properties.Settings.Default.Save();
             this.Close();
         }

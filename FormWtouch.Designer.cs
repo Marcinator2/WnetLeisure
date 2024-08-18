@@ -35,11 +35,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtbxWTUser = new System.Windows.Forms.TextBox();
             this.txtbxWTPW = new System.Windows.Forms.TextBox();
+            this.txtBxWTCert = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnWTSave
             // 
-            this.btnWTSave.Location = new System.Drawing.Point(16, 120);
+            this.btnWTSave.Location = new System.Drawing.Point(8, 151);
             this.btnWTSave.Name = "btnWTSave";
             this.btnWTSave.Size = new System.Drawing.Size(120, 32);
             this.btnWTSave.TabIndex = 0;
@@ -49,7 +51,7 @@
             // 
             // btnWTCancel
             // 
-            this.btnWTCancel.Location = new System.Drawing.Point(152, 120);
+            this.btnWTCancel.Location = new System.Drawing.Point(144, 151);
             this.btnWTCancel.Name = "btnWTCancel";
             this.btnWTCancel.Size = new System.Drawing.Size(120, 32);
             this.btnWTCancel.TabIndex = 1;
@@ -62,7 +64,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(32, 40);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nutzername:";
             // 
@@ -71,7 +73,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(32, 80);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 16);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Passwort:";
             // 
@@ -79,19 +81,37 @@
             // 
             this.txtbxWTUser.Location = new System.Drawing.Point(128, 40);
             this.txtbxWTUser.Name = "txtbxWTUser";
-            this.txtbxWTUser.Size = new System.Drawing.Size(136, 22);
+            this.txtbxWTUser.Size = new System.Drawing.Size(136, 20);
             this.txtbxWTUser.TabIndex = 4;
             // 
             // txtbxWTPW
             // 
             this.txtbxWTPW.Location = new System.Drawing.Point(128, 80);
             this.txtbxWTPW.Name = "txtbxWTPW";
-            this.txtbxWTPW.Size = new System.Drawing.Size(136, 22);
+            this.txtbxWTPW.Size = new System.Drawing.Size(136, 20);
             this.txtbxWTPW.TabIndex = 5;
+            // 
+            // txtBxWTCert
+            // 
+            this.txtBxWTCert.Location = new System.Drawing.Point(128, 114);
+            this.txtBxWTCert.Name = "txtBxWTCert";
+            this.txtBxWTCert.Size = new System.Drawing.Size(136, 20);
+            this.txtBxWTCert.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "PEM Zertifikat:";
             // 
             // FormWtouch
             // 
-            this.ClientSize = new System.Drawing.Size(331, 172);
+            this.ClientSize = new System.Drawing.Size(331, 221);
+            this.Controls.Add(this.txtBxWTCert);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbxWTPW);
             this.Controls.Add(this.txtbxWTUser);
             this.Controls.Add(this.label4);
@@ -115,5 +135,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtbxWTUser;
         private System.Windows.Forms.TextBox txtbxWTPW;
+        private System.Windows.Forms.TextBox txtBxWTCert;
+        private System.Windows.Forms.Label label1;
     }
 }

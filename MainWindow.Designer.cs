@@ -41,6 +41,7 @@
             this.anleitungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überWNETLeisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLIN = new System.Windows.Forms.Button();
+            this.btnStartWTouchKonfiMngr = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             // btnPort
             // 
-            this.btnPort.Location = new System.Drawing.Point(12, 39);
+            this.btnPort.Location = new System.Drawing.Point(14, 39);
             this.btnPort.Margin = new System.Windows.Forms.Padding(2);
             this.btnPort.Name = "btnPort";
             this.btnPort.Size = new System.Drawing.Size(126, 58);
@@ -142,13 +143,24 @@
             // 
             // btnLIN
             // 
-            this.btnLIN.Location = new System.Drawing.Point(275, 39);
+            this.btnLIN.Location = new System.Drawing.Point(405, 39);
             this.btnLIN.Name = "btnLIN";
             this.btnLIN.Size = new System.Drawing.Size(123, 58);
             this.btnLIN.TabIndex = 3;
             this.btnLIN.Text = "LINs hochladen";
             this.btnLIN.UseVisualStyleBackColor = true;
             this.btnLIN.Click += new System.EventHandler(this.btnLIN_Click);
+            // 
+            // btnStartWTouchKonfiMngr
+            // 
+            this.btnStartWTouchKonfiMngr.Location = new System.Drawing.Point(274, 39);
+            this.btnStartWTouchKonfiMngr.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStartWTouchKonfiMngr.Name = "btnStartWTouchKonfiMngr";
+            this.btnStartWTouchKonfiMngr.Size = new System.Drawing.Size(126, 58);
+            this.btnStartWTouchKonfiMngr.TabIndex = 4;
+            this.btnStartWTouchKonfiMngr.Text = "WTouch Konfigurations Manager";
+            this.btnStartWTouchKonfiMngr.UseVisualStyleBackColor = true;
+            this.btnStartWTouchKonfiMngr.Click += new System.EventHandler(this.btnStartWTouchKonfiMngr_Click);
             // 
             // MainWindow
             // 
@@ -159,6 +171,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(589, 328);
+            this.Controls.Add(this.btnStartWTouchKonfiMngr);
             this.Controls.Add(this.btnLIN);
             this.Controls.Add(this.btnPort);
             this.Controls.Add(this.btnStartIS600EKonfiMngr);
@@ -192,6 +205,7 @@
         private System.Windows.Forms.ToolStripMenuItem anleitungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem überWNETLeisuToolStripMenuItem;
         private System.Windows.Forms.Button btnLIN;
+        private System.Windows.Forms.Button btnStartWTouchKonfiMngr;
     }
 }
 

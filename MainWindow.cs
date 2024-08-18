@@ -87,6 +87,13 @@ namespace WnetLeisure
             FormLIN formLIN = new FormLIN();
             formLIN.Show();
         }
+
+        private void btnStartWTouchKonfiMngr_Click(object sender, EventArgs e)
+        {
+            WTouchKonfiManager wTouchKonfiManager = new WTouchKonfiManager();
+            wTouchKonfiManager.Show();
+
+        }
     }
 
 }
