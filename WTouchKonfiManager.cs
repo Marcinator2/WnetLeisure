@@ -20,8 +20,14 @@ namespace WnetLeisure
         string pemFilePath = WnetLeisure.Properties.Settings.Default.WTouchCert;
         string jsonFilePath = "/usr/var/config/oven_config.json"; // Path to JSON file on the remote server
         string jsonServiceConfig = "/usr/var/config/service_config.json"; // Path to service config JSON file
+        string tempConfiFilePath = "/home/wiesheu/temp_oven_config.json";
         string sudoPassword = WnetLeisure.Properties.Settings.Default.WtouchPW;//"wiesheu";
-        
+        private string loadedJsonString; // Hier wird der JSON-String gespeichert
+
+        private bool isUsingJumphost;
+        private ForwardedPortLocal portForwarded;
+
+
         private SshClient client; // Keep a reference to the SSH client
 
         public WTouchKonfiManager()
@@ -32,7 +38,7 @@ namespace WnetLeisure
             comboBoxOvenNo.Items.Add("Oven 3");
             comboBoxOvenNo.Items.Add("Oven 4");
             comboBoxOvenNo.SelectedIndex = 0;
-            txtBxIPConnect.Text = "10.10.10.150";
+            txtBxIPConnect.Text = "10.100.30.101";
             host = txtBxIPConnect.Text;
             dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 3, 0, 0); // Standart auf 3 uhr
 
@@ -54,7 +60,7 @@ namespace WnetLeisure
                 }
 
                 // Read the JSON file content via SSH
-                string jsonString = ReadFileFromServer(client, jsonFilePath);
+                loadedJsonString = ReadFileFromServer(client, jsonFilePath); // Speichere den JSON-String
                 string jsonStringService = ReadFileFromServer(client, jsonServiceConfig);
 
                 // Execute command to get the current system time
@@ -66,7 +72,7 @@ namespace WnetLeisure
                 }
 
                 // Deserialize JSON data using Newtonsoft.Json
-                Root config = JsonConvert.DeserializeObject<Root>(jsonString);
+                Root config = JsonConvert.DeserializeObject<Root>(loadedJsonString);
                 RootService configService = JsonConvert.DeserializeObject<RootService>(jsonStringService);
 
                 // Ensure the deserialized object is not null
@@ -104,9 +110,10 @@ namespace WnetLeisure
                 txtBXlights_off_baking.Text = config.Energy.LightsOffBaking.ToString();
                 txtbxlights_off_cleaning.Text = config.Energy.LightsOffCleaning.ToString();
                 txtBxpreheating_timeout_minutes.Text = config.Energy.PreheatingTimeoutMinutes.ToString();
-
+                //client.Disconnect();//testen
                 // Disconnect the SSH client
                 DisconnectFromHost();
+            
             }
             catch (Exception ex)
             {
@@ -116,68 +123,123 @@ namespace WnetLeisure
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+           
             try
             {
-                if (client == null)
+
+                if (string.IsNullOrEmpty(loadedJsonString))
                 {
-                    client = ConnectToHost(host, targetHost, username, pemFilePath);
-                    if (client == null)
-                    {
-                        return; // Connection failed, abort method
-                    }
+                    MessageBox.Show("JSON-Daten wurden nicht geladen. Bitte laden Sie die Daten zuerst.");
+                    return;
                 }
 
-                // Read the JSON file content via SSH
-                string jsonString = ReadFileFromServer(client, jsonFilePath);
+                // Deserialisiere die JSON-Daten
+                Root config = JsonConvert.DeserializeObject<Root>(loadedJsonString);
 
-                // Deserialize JSON data using Newtonsoft.Json
-                Root config = JsonConvert.DeserializeObject<Root>(jsonString);
-
-                // Ensure the deserialized object is not null
+                // Prüfe, ob das deserialisierte Objekt null ist
                 if (config?.Oven == null)
                 {
                     MessageBox.Show("Fehler beim Laden der Ofenkonfiguration.");
                     return;
                 }
 
-                // Update configuration based on text box values
-                config.Oven.TimeZone = txtBxTimeZone.Text;
-                config.Oven.TimeServer = txtBxTimeServer.Text;
-                config.Network.General.UpdateServer = txtBxUpdateServer.Text;
-                config.Network.General.NetworkRole = txtBxNetworRole.Text;
-                config.Network.General.AvahiHostname = txtBxAvahiHostname.Text;
+                    config.Oven.TimeZone = txtBxTimeZone.Text;
+                    config.Oven.TimeServer = txtBxTimeServer.Text;
+                    config.Network.General.UpdateServer = txtBxUpdateServer.Text;
+                    config.Network.General.NetworkRole = txtBxNetworRole.Text;
+                    config.Network.General.AvahiHostname = txtBxAvahiHostname.Text;
 
-                // Network Eth0
-                config.Network.Eth0.DHCP = bool.Parse(txtBxDHCP.Text);
-                config.Network.Eth0.DhcpHostname = txtBxDHCPHostname.Text;
-                config.Network.Eth0.Autonegotiation = bool.Parse(txtBxAutonegotiation.Text);
-                config.Network.Eth0.Gateway = txtBxGateway.Text;
-                config.Network.Eth0.Ip = txtBxIP.Text;
-                config.Network.Eth0.Nameserver = txtBxNameserver.Text;
-                config.Network.Eth0.Netmask = txtBxNetworkmask.Text;
+                    config.Network.Eth0.DHCP = bool.Parse(txtBxDHCP.Text);
+                    config.Network.Eth0.DhcpHostname = txtBxDHCPHostname.Text;
+                    config.Network.Eth0.Autonegotiation = bool.Parse(txtBxAutonegotiation.Text);
+                    config.Network.Eth0.Gateway = txtBxGateway.Text;
+                    config.Network.Eth0.Ip = txtBxIP.Text;
+                    config.Network.Eth0.Nameserver = txtBxNameserver.Text;
+                    config.Network.Eth0.Netmask = txtBxNetworkmask.Text;
 
-                // Energy
-                config.Energy.LightsOffStandby = bool.Parse(txtBxlights_off_standby.Text);
-                config.Energy.LightsOffBaking = bool.Parse(txtBXlights_off_baking.Text);
-                config.Energy.LightsOffCleaning = bool.Parse(txtbxlights_off_cleaning.Text);
-                config.Energy.PreheatingTimeoutMinutes = int.Parse(txtBxpreheating_timeout_minutes.Text);
+                    config.Energy.LightsOffStandby = bool.Parse(txtBxlights_off_standby.Text);
+                    config.Energy.LightsOffBaking = bool.Parse(txtBXlights_off_baking.Text);
+                    config.Energy.LightsOffCleaning = bool.Parse(txtbxlights_off_cleaning.Text);
+                    config.Energy.PreheatingTimeoutMinutes = int.Parse(txtBxpreheating_timeout_minutes.Text);
 
-                // Serialize the updated configuration back to a JSON string
-                jsonString = JsonConvert.SerializeObject(config, Formatting.Indented);
+                // Serialize die aktualisierte Konfiguration zurück in einen JSON-String
+                loadedJsonString = JsonConvert.SerializeObject(config, Formatting.Indented); // Speichere den aktualisierten JSON-String
+                                                                                             // Jetzt mit dem Server verbinden, um die Daten zu speichern
 
-                // Write the updated JSON content back to the server
-                WriteFileToServer(client, jsonFilePath, jsonString);
+                // PEM-Datei laden
+                PrivateKeyFile privateKey = new PrivateKeyFile(pemFilePath);
+                var keyFiles = new[] { privateKey };
 
-                // Disconnect the SSH client
-                DisconnectFromHost();
+                // SSH-Verbindung konfigurieren
+                var connectionInfo = new ConnectionInfo(host, username,
+                    new PasswordAuthenticationMethod(username, sudoPassword),
+                    new PrivateKeyAuthenticationMethod(username, keyFiles)
+                );
 
-                MessageBox.Show("Daten erfolgreich gespeichert.");
+                // Verbindung herstellen
+                using (var client = new ScpClient(connectionInfo))
+                {
+                    try
+                    {
+                        client.Connect();
+
+                        // JSON-String in eine temporäre Datei schreiben
+                        string tempFilePath = Path.GetTempFileName();
+                        File.WriteAllText(tempFilePath, loadedJsonString);
+
+                        // Datei via SCP auf das Gerät übertragen
+                        using (var fileStream = new FileStream(tempFilePath, FileMode.Open))
+                        {
+                            client.Upload(fileStream, tempConfiFilePath);
+                        }
+
+                        Console.WriteLine("JSON-Datei erfolgreich übertragen!");
+
+                        // Temporäre Datei löschen
+                        File.Delete(tempFilePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Fehler: {ex.Message}");
+                    }
+                    finally
+                    {
+                        client.Disconnect();
+                    }
+                }
+
+                // Die Datei nach /usr/var/config/oven_config.json verschieben
+                using (var sshClient = new SshClient(connectionInfo))
+                {
+                    try
+                    {
+                        sshClient.Connect();
+                        // Befehl zum Verschieben der Datei ausführen
+                        string moveCommand = $"echo \"{sudoPassword}\" | sudo -S mv {tempConfiFilePath} {jsonFilePath}";// { jsonFilePath}/usr/var/config/oven_config1.json
+                        var cmd = sshClient.CreateCommand(moveCommand);
+                        cmd.Execute();
+                        Console.WriteLine("Datei erfolgreich verschoben!");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Fehler beim Verschieben der Datei: {ex.Message}");
+                    }
+                    finally
+                    {
+                        sshClient.Disconnect();
+                    }
+                }
+
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ein Fehler ist aufgetreten: " + ex.Message);
             }
         }
+
+
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
@@ -232,13 +294,30 @@ namespace WnetLeisure
 
         private void DisconnectFromHost()
         {
+          //  MessageBox.Show(isUsingJumphost.ToString());
+            // Überprüfen, ob die Portweiterleitung aktiv ist und gestoppt werden muss
+            if (portForwarded != null)
+            {
+                if (portForwarded.IsStarted)
+                {
+                    portForwarded.Stop();
+                }
+                portForwarded.Dispose();
+                portForwarded = null;
+            }
+
+            // Überprüfen, ob der SSH-Client verbunden ist und getrennt werden muss
             if (client != null && client.IsConnected)
             {
                 client.Disconnect();
                 client.Dispose();
                 client = null;
             }
+
+            // Setze das Jumphost-Flag zurück
+            isUsingJumphost = false;
         }
+
 
         private SshClient CreateSshClient(string host, string username, string pemFilePath)
         {
@@ -260,6 +339,9 @@ namespace WnetLeisure
                     var client = new SshClient(connectionInfo);
                     client.Connect();
 
+                    // Set the flag to indicate that we're using a jumphost
+                    isUsingJumphost = false;
+
                     return client;
                 }
             }
@@ -273,10 +355,15 @@ namespace WnetLeisure
 
         private SshClient ConnectViaJumphost(string jumphost, string targetHost, string username, string privateKeyPath)
         {
+            // Trenne alle bestehenden Verbindungen, bevor eine neue aufgebaut wird
+            DisconnectFromHost();
+
             var keyFile = new PrivateKeyFile(privateKeyPath);
             var keyFiles = new[] { keyFile };
 
-            // Create the SSH connection details for the jump host with timeout
+            //MessageBox.Show("Host:" + host + " Jump:" + jumphost + " Target: " + targetHost);
+
+            // SSH connection details for the jump host with timeout
             var jumpConnectionInfo = new ConnectionInfo(jumphost, username, new PrivateKeyAuthenticationMethod(username, keyFiles))
             {
                 Timeout = TimeSpan.FromSeconds(5) // Set the timeout duration here
@@ -284,26 +371,26 @@ namespace WnetLeisure
 
             try
             {
-                using (var jumpClient = new SshClient(jumpConnectionInfo))
+                var jumpClient = new SshClient(jumpConnectionInfo);
+                jumpClient.Connect();
+
+                // Create the port forwarding from localhost to the target host via the jump host
+                var portForwarded = new ForwardedPortLocal("localhost", 22, targetHost, 22);
+                jumpClient.AddForwardedPort(portForwarded);
+                portForwarded.Start();
+
+                // SSH connection details for the target host with timeout
+                var targetConnectionInfo = new ConnectionInfo("localhost", 22, username, new PrivateKeyAuthenticationMethod(username, keyFiles))
                 {
-                    jumpClient.Connect();
+                    Timeout = TimeSpan.FromSeconds(10) // Set the timeout duration here
+                };
 
-                    using (var portForwarded = new ForwardedPortLocal("localhost", 22, targetHost, 22))
-                    {
-                        jumpClient.AddForwardedPort(portForwarded);
-                        portForwarded.Start();
-
-                        var targetConnectionInfo = new ConnectionInfo("localhost", 22, username, new PrivateKeyAuthenticationMethod(username, keyFiles))
-                        {
-                            Timeout = TimeSpan.FromSeconds(10) // Set the timeout duration here
-                        };
-
-                        var targetClient = new SshClient(targetConnectionInfo);
-                        targetClient.Connect();
-
-                        return targetClient;
-                    }
-                }
+                var targetClient = new SshClient(targetConnectionInfo);
+                targetClient.Connect();
+                // Set the flag to indicate that we're using a jumphost
+                isUsingJumphost = true;
+                // Return the connected client to use for further operations
+                return targetClient;
             }
             catch (Exception ex)
             {
@@ -311,6 +398,7 @@ namespace WnetLeisure
                 return null;
             }
         }
+
 
         private string ReadFileFromServer(SshClient client, string filePath)
         {
@@ -346,20 +434,30 @@ namespace WnetLeisure
 
         private void WriteFileToServer(SshClient client, string filePath, string content)
         {
-            string tempFilePath = "/home/wiesheu/temp_oven_config.json";
+            
 
+
+
+
+            // Erstelle eine neue ScpClient-Instanz und stelle die Verbindung her
             using (var scp = new ScpClient(client.ConnectionInfo))
             {
+                MessageBox.Show("");
                 scp.Connect();
+                
+                // Nutze einen MemoryStream, um den Inhalt hochzuladen
                 using (var ms = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(content)))
                 {
-                    scp.Upload(ms, tempFilePath);
+                    scp.Upload(ms, tempConfiFilePath);
                 }
-                scp.Disconnect();
+
+                scp.Disconnect(); // Trenne die ScpClient-Verbindung
             }
 
-            string commandText = $"echo {sudoPassword} | sudo -S mv {tempFilePath} {filePath}";
+            // Führe das Verschieben der Datei auf dem Server durch
+            string commandText = $"echo {sudoPassword} | sudo -S mv {tempConfiFilePath} {filePath}";
 
+            // Nutze den bestehenden SshClient, um den Befehl auszuführen
             using (var command = client.CreateCommand(commandText))
             {
                 command.Execute();
@@ -369,6 +467,8 @@ namespace WnetLeisure
                 }
             }
         }
+
+
 
         private void txtBxIPConnect_TextChanged(object sender, EventArgs e)
         {
@@ -439,7 +539,10 @@ namespace WnetLeisure
 
             [JsonProperty("time_server")]
             public string TimeServer { get; set; }
-        }
+
+            [Newtonsoft.Json.JsonExtensionData]
+            public IDictionary<string, object> ExtensionData { get; set; }
+    }
 
         public class General
         {
@@ -451,7 +554,10 @@ namespace WnetLeisure
 
             [JsonProperty("avahi_hostname")]
             public string AvahiHostname { get; set; }
-        }
+
+            [Newtonsoft.Json.JsonExtensionData]
+            public IDictionary<string, object> ExtensionData { get; set; }
+    }
 
         public class Eth0
         {
@@ -475,7 +581,10 @@ namespace WnetLeisure
 
             [JsonProperty("nameserver")]
             public string Nameserver { get; set; }
-        }
+
+            [Newtonsoft.Json.JsonExtensionData]
+            public IDictionary<string, object> ExtensionData { get; set; }
+    }
 
         public class Network
         {
@@ -484,7 +593,10 @@ namespace WnetLeisure
 
             [JsonProperty("eth0")]
             public Eth0 Eth0 { get; set; }
-        }
+
+            [Newtonsoft.Json.JsonExtensionData]
+            public IDictionary<string, object> ExtensionData { get; set; }
+    }
 
 
 
@@ -501,7 +613,10 @@ namespace WnetLeisure
 
             [JsonProperty("preheating_timeout_minutes")]
             public int PreheatingTimeoutMinutes { get; set; }
-        }
+
+            [Newtonsoft.Json.JsonExtensionData]
+            public IDictionary<string, object> ExtensionData { get; set; }
+    }
 
 
     

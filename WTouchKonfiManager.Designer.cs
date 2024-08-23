@@ -103,6 +103,7 @@ namespace WnetLeisure
             this.comboBoxOvenNo.Name = "comboBoxOvenNo";
             this.comboBoxOvenNo.Size = new System.Drawing.Size(93, 21);
             this.comboBoxOvenNo.TabIndex = 1;
+            this.comboBoxOvenNo.SelectedIndexChanged += new System.EventHandler(this.comboBoxOvenNo_SelectedIndexChanged);
             // 
             // txtBxIPConnect
             // 
@@ -110,6 +111,7 @@ namespace WnetLeisure
             this.txtBxIPConnect.Name = "txtBxIPConnect";
             this.txtBxIPConnect.Size = new System.Drawing.Size(111, 20);
             this.txtBxIPConnect.TabIndex = 2;
+            this.txtBxIPConnect.TextChanged += new System.EventHandler(this.txtBxIPConnect_TextChanged);
             // 
             // label1
             // 
