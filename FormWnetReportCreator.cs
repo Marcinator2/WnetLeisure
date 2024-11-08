@@ -40,11 +40,12 @@ namespace WnetLeisure
                 .Build();
 
             // Parameter aus der Konfiguration
-            string server = config["DatabaseSettings:Server"];
-            string trustServerCert = config["DatabaseSettings:trustServerCert"];
+            string server = WnetLeisure.Properties.Settings.Default.SQLServer;
+            string trustServerCert = WnetLeisure.Properties.Settings.Default.trustServerCert.ToString();
+            //string trustServerCert = config["DatabaseSettings:trustServerCert"];
             // Weisen Sie die Konfigurationswerte den Instanzvariablen zu
-            reportServerUrl = config["ReportServerSettings:BaseUrl"];
-            reportPath = config["ReportServerSettings:ReportPath"];
+            reportServerUrl = WnetLeisure.Properties.Settings.Default.ReportServer;
+            // reportPath = config["ReportServerSettings:ReportPath"];
 
             // Verbindungszeichenfolge für SQL-Authentifizierung erstellen
             string connectionString = $"Server={server};Integrated Security=True;TrustServerCertificate={trustServerCert};";
@@ -224,11 +225,19 @@ namespace WnetLeisure
                         // Extrahiere nur den Namen des Berichts (nach dem letzten '\')
                         string reportName = Path.GetFileName(fullReportPath);
 
-                        // Erstelle den Dateipfad und füge den Datenbanknamen und den Reportnamen an den Anfang hinzu
-                        string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                                                        $"{datenbankName}_{DateTime.Now.ToString("yyyy-MM-dd")}_{reportName}.xlsx");
+                        // Definiere den Ordnerpfad relativ zur .exe-Datei und stelle sicher, dass der Ordner existiert
+                        string exePath = AppContext.BaseDirectory;
+                        string reportsFolderPath = Path.Combine(exePath, "WnetReports");
 
-                        // Jetzt ist der Dateiname z.B. "wnet_DatenDB_19_2024-11-07_SalesReport.xlsx"
+                        // Überprüfen, ob der Ordner "WnetReports" existiert; wenn nicht, erstelle ihn
+                        if (!Directory.Exists(reportsFolderPath))
+                        {
+                            Directory.CreateDirectory(reportsFolderPath);
+                        }
+
+                        // Erstelle den Dateipfad mit dem Datenbanknamen und Reportnamen
+                        string filePath = Path.Combine(reportsFolderPath,
+                                                       $"{datenbankName}_{DateTime.Now:yyyy-MM-dd}_{reportName}.xlsx");
 
 
 

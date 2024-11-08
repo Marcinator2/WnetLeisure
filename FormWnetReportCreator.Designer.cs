@@ -32,6 +32,7 @@ namespace WnetLeisure
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWnetReportCreator));
             comboBoxDatenbanken = new ComboBox();
             label1 = new Label();
             label2 = new Label();
@@ -196,6 +197,7 @@ namespace WnetLeisure
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(comboBoxDatenbanken);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormWnetReportCreator";
             Text = "Wnet Report Creator";
             ((System.ComponentModel.ISupportInitialize)pictureBoxLaden).EndInit();
