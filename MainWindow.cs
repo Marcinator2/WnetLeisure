@@ -14,9 +14,9 @@ namespace WnetLeisure
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
-         
+
         }
-  
+
 
         private void btnStartIS600EKonfiMngr_Click(object sender, EventArgs e)
         {
@@ -87,6 +87,30 @@ namespace WnetLeisure
             FormLIN formLIN = new FormLIN();
             formLIN.Show();
         }
+
+        private void btnReportCreator_Click(object sender, EventArgs e)
+        {
+            FormWnetReportCreator FormWnetReportCreator = new FormWnetReportCreator();
+            FormWnetReportCreator.Show();
+        }
+
+        private void serverZugaengeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormServerZugaenge FormServerZugaenge = new FormServerZugaenge();
+            FormServerZugaenge.Show();
+
+        }
+
+
+        private void zugaengeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+     
+
+        }
+
+        
+
+
     }
 
 }

@@ -29,153 +29,167 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.btnStartIS600EKonfiMngr = new System.Windows.Forms.Button();
-            this.btnPort = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zugängeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exclusiveIS600EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wtouchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entwickleroptionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.anleitungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.überWNETLeisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnLIN = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            btnStartIS600EKonfiMngr = new System.Windows.Forms.Button();
+            btnPort = new System.Windows.Forms.Button();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            zugängeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            exclusiveIS600EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            wtouchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            serverZugängeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            entwickleroptionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            anleitungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            überWNETLeisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            btnLIN = new System.Windows.Forms.Button();
+            btnReportCreator = new System.Windows.Forms.Button();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // btnStartIS600EKonfiMngr
             // 
-            this.btnStartIS600EKonfiMngr.Location = new System.Drawing.Point(144, 39);
-            this.btnStartIS600EKonfiMngr.Margin = new System.Windows.Forms.Padding(2);
-            this.btnStartIS600EKonfiMngr.Name = "btnStartIS600EKonfiMngr";
-            this.btnStartIS600EKonfiMngr.Size = new System.Drawing.Size(126, 58);
-            this.btnStartIS600EKonfiMngr.TabIndex = 0;
-            this.btnStartIS600EKonfiMngr.Text = "IS600E / Exclusive Konfigurations Manager";
-            this.btnStartIS600EKonfiMngr.UseVisualStyleBackColor = true;
-            this.btnStartIS600EKonfiMngr.Click += new System.EventHandler(this.btnStartIS600EKonfiMngr_Click);
+            btnStartIS600EKonfiMngr.Location = new System.Drawing.Point(168, 45);
+            btnStartIS600EKonfiMngr.Margin = new System.Windows.Forms.Padding(2);
+            btnStartIS600EKonfiMngr.Name = "btnStartIS600EKonfiMngr";
+            btnStartIS600EKonfiMngr.Size = new System.Drawing.Size(147, 67);
+            btnStartIS600EKonfiMngr.TabIndex = 0;
+            btnStartIS600EKonfiMngr.Text = "IS600E / Exclusive Konfigurations Manager";
+            btnStartIS600EKonfiMngr.UseVisualStyleBackColor = true;
+            btnStartIS600EKonfiMngr.Click += btnStartIS600EKonfiMngr_Click;
             // 
             // btnPort
             // 
-            this.btnPort.Location = new System.Drawing.Point(12, 39);
-            this.btnPort.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPort.Name = "btnPort";
-            this.btnPort.Size = new System.Drawing.Size(126, 58);
-            this.btnPort.TabIndex = 1;
-            this.btnPort.Text = "Port Checker";
-            this.btnPort.UseVisualStyleBackColor = true;
-            this.btnPort.Click += new System.EventHandler(this.btnPing_Click);
+            btnPort.Location = new System.Drawing.Point(14, 45);
+            btnPort.Margin = new System.Windows.Forms.Padding(2);
+            btnPort.Name = "btnPort";
+            btnPort.Size = new System.Drawing.Size(147, 67);
+            btnPort.TabIndex = 1;
+            btnPort.Text = "Port Checker";
+            btnPort.UseVisualStyleBackColor = true;
+            btnPort.Click += btnPing_Click;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.einstellungenToolStripMenuItem,
-            this.entwickleroptionenToolStripMenuItem,
-            this.hilfeToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(589, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { einstellungenToolStripMenuItem, entwickleroptionenToolStripMenuItem, hilfeToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            menuStrip1.Size = new System.Drawing.Size(687, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
             // 
             // einstellungenToolStripMenuItem
             // 
-            this.einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zugängeToolStripMenuItem});
-            this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
-            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.einstellungenToolStripMenuItem.Text = "Einstellungen";
+            einstellungenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { zugängeToolStripMenuItem, serverZugängeToolStripMenuItem });
+            einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
+            einstellungenToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            einstellungenToolStripMenuItem.Text = "Einstellungen";
             // 
             // zugängeToolStripMenuItem
             // 
-            this.zugängeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exclusiveIS600EToolStripMenuItem,
-            this.wtouchToolStripMenuItem});
-            this.zugängeToolStripMenuItem.Name = "zugängeToolStripMenuItem";
-            this.zugängeToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.zugängeToolStripMenuItem.Text = "Zugänge";
+            zugängeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { exclusiveIS600EToolStripMenuItem, wtouchToolStripMenuItem });
+            zugängeToolStripMenuItem.Name = "zugängeToolStripMenuItem";
+            zugängeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            zugängeToolStripMenuItem.Text = "Steuerungs Zugänge";
+            zugängeToolStripMenuItem.Click += zugaengeToolStripMenuItem_Click;
             // 
             // exclusiveIS600EToolStripMenuItem
             // 
-            this.exclusiveIS600EToolStripMenuItem.Name = "exclusiveIS600EToolStripMenuItem";
-            this.exclusiveIS600EToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.exclusiveIS600EToolStripMenuItem.Text = "Exclusive/IS600E";
-            this.exclusiveIS600EToolStripMenuItem.Click += new System.EventHandler(this.exclusiveIS600EToolStripMenuItem_Click);
+            exclusiveIS600EToolStripMenuItem.Name = "exclusiveIS600EToolStripMenuItem";
+            exclusiveIS600EToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exclusiveIS600EToolStripMenuItem.Text = "Exclusive/IS600E";
+            exclusiveIS600EToolStripMenuItem.Click += exclusiveIS600EToolStripMenuItem_Click;
             // 
             // wtouchToolStripMenuItem
             // 
-            this.wtouchToolStripMenuItem.Name = "wtouchToolStripMenuItem";
-            this.wtouchToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.wtouchToolStripMenuItem.Text = "Wtouch";
-            this.wtouchToolStripMenuItem.Click += new System.EventHandler(this.wtouchToolStripMenuItem_Click);
+            wtouchToolStripMenuItem.Name = "wtouchToolStripMenuItem";
+            wtouchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            wtouchToolStripMenuItem.Text = "Wtouch";
+            wtouchToolStripMenuItem.Click += wtouchToolStripMenuItem_Click;
+            // 
+            // serverZugängeToolStripMenuItem
+            // 
+            serverZugängeToolStripMenuItem.Name = "serverZugängeToolStripMenuItem";
+            serverZugängeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            serverZugängeToolStripMenuItem.Text = "Server Zugänge";
+            serverZugängeToolStripMenuItem.Click += serverZugaengeToolStripMenuItem_Click;
             // 
             // entwickleroptionenToolStripMenuItem
             // 
-            this.entwickleroptionenToolStripMenuItem.Name = "entwickleroptionenToolStripMenuItem";
-            this.entwickleroptionenToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
-            this.entwickleroptionenToolStripMenuItem.Text = "Entwickleroptionen";
-            this.entwickleroptionenToolStripMenuItem.Click += new System.EventHandler(this.entwickleroptionenToolStripMenuItem_Click);
+            entwickleroptionenToolStripMenuItem.Name = "entwickleroptionenToolStripMenuItem";
+            entwickleroptionenToolStripMenuItem.Size = new System.Drawing.Size(121, 20);
+            entwickleroptionenToolStripMenuItem.Text = "Entwickleroptionen";
+            entwickleroptionenToolStripMenuItem.Click += entwickleroptionenToolStripMenuItem_Click;
             // 
             // hilfeToolStripMenuItem
             // 
-            this.hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.anleitungToolStripMenuItem,
-            this.überWNETLeisuToolStripMenuItem});
-            this.hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
-            this.hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.hilfeToolStripMenuItem.Text = "Hilfe";
+            hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { anleitungToolStripMenuItem, überWNETLeisuToolStripMenuItem });
+            hilfeToolStripMenuItem.Name = "hilfeToolStripMenuItem";
+            hilfeToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            hilfeToolStripMenuItem.Text = "Hilfe";
             // 
             // anleitungToolStripMenuItem
             // 
-            this.anleitungToolStripMenuItem.Name = "anleitungToolStripMenuItem";
-            this.anleitungToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.anleitungToolStripMenuItem.Text = "Anleitung";
+            anleitungToolStripMenuItem.Name = "anleitungToolStripMenuItem";
+            anleitungToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            anleitungToolStripMenuItem.Text = "Anleitung";
             // 
             // überWNETLeisuToolStripMenuItem
             // 
-            this.überWNETLeisuToolStripMenuItem.Name = "überWNETLeisuToolStripMenuItem";
-            this.überWNETLeisuToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.überWNETLeisuToolStripMenuItem.Text = "Über W-NET Leisure";
-            this.überWNETLeisuToolStripMenuItem.Click += new System.EventHandler(this.überWNETLeisuToolStripMenuItem_Click);
+            überWNETLeisuToolStripMenuItem.Name = "überWNETLeisuToolStripMenuItem";
+            überWNETLeisuToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            überWNETLeisuToolStripMenuItem.Text = "Über W-NET Leisure";
+            überWNETLeisuToolStripMenuItem.Click += überWNETLeisuToolStripMenuItem_Click;
             // 
             // btnLIN
             // 
-            this.btnLIN.Location = new System.Drawing.Point(275, 39);
-            this.btnLIN.Name = "btnLIN";
-            this.btnLIN.Size = new System.Drawing.Size(123, 58);
-            this.btnLIN.TabIndex = 3;
-            this.btnLIN.Text = "LINs hochladen";
-            this.btnLIN.UseVisualStyleBackColor = true;
-            this.btnLIN.Click += new System.EventHandler(this.btnLIN_Click);
+            btnLIN.Location = new System.Drawing.Point(321, 45);
+            btnLIN.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnLIN.Name = "btnLIN";
+            btnLIN.Size = new System.Drawing.Size(144, 67);
+            btnLIN.TabIndex = 3;
+            btnLIN.Text = "LINs hochladen";
+            btnLIN.UseVisualStyleBackColor = true;
+            btnLIN.Click += btnLIN_Click;
+            // 
+            // btnReportCreator
+            // 
+            btnReportCreator.Location = new System.Drawing.Point(473, 45);
+            btnReportCreator.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnReportCreator.Name = "btnReportCreator";
+            btnReportCreator.Size = new System.Drawing.Size(144, 67);
+            btnReportCreator.TabIndex = 4;
+            btnReportCreator.Text = "Wnet Report Creator";
+            btnReportCreator.UseVisualStyleBackColor = true;
+            btnReportCreator.Click += btnReportCreator_Click;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::WnetLeisure.Properties.Resources.W_NETLeisureohneBG;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(589, 328);
-            this.Controls.Add(this.btnLIN);
-            this.Controls.Add(this.btnPort);
-            this.Controls.Add(this.btnStartIS600EKonfiMngr);
-            this.Controls.Add(this.menuStrip1);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "MainWindow";
-            this.Text = "W-NET Leisure";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.SystemColors.Control;
+            BackgroundImage = Properties.Resources.W_NETLeisureohneBG;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            CausesValidation = false;
+            ClientSize = new System.Drawing.Size(687, 378);
+            Controls.Add(btnReportCreator);
+            Controls.Add(btnLIN);
+            Controls.Add(btnPort);
+            Controls.Add(btnStartIS600EKonfiMngr);
+            Controls.Add(menuStrip1);
+            DoubleBuffered = true;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Margin = new System.Windows.Forms.Padding(2);
+            Name = "MainWindow";
+            Text = "W-NET Leisure";
+            Load += MainWindow_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -192,6 +206,8 @@
         private System.Windows.Forms.ToolStripMenuItem anleitungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem überWNETLeisuToolStripMenuItem;
         private System.Windows.Forms.Button btnLIN;
+        private System.Windows.Forms.Button btnReportCreator;
+        private System.Windows.Forms.ToolStripMenuItem serverZugängeToolStripMenuItem;
     }
 }
 
