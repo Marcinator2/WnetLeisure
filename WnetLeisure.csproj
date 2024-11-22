@@ -27,11 +27,11 @@
     <ApplicationIcon>W.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="bin\Debug\WnetLeisure.exe.config" />
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\WnetLeisure.exe" />
-    <Content Include="bin\Debug\WnetLeisure.pdb" />
     <Content Include="W-NETLeisureohneBG.png" />
     <Content Include="W-NETohneBG.png" />
     <Content Include="W.ico" />
@@ -49,15 +49,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="packages\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.0.4.421302\analyzers\dotnet\cs\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.Common.dll" />
-    <Analyzer Include="packages\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.0.4.421302\analyzers\dotnet\cs\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.dll" />
-    <Analyzer Include="packages\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers.0.4.421302\analyzers\dotnet\cs\Microsoft.DotNet.UpgradeAssistant.Extensions.Default.CodeFixes.dll" />
+    
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="33.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
@@ -67,6 +64,9 @@
   <ItemGroup>
     <Compile Remove="Backup\WTouchKonfiManager.cs" />
     <EmbeddedResource Remove="Backup\WTouchKonfiManager.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="WnetLeisureWtouchKonfiMngr.7z" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

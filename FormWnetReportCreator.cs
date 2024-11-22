@@ -27,6 +27,8 @@ namespace WnetLeisure
         private SqlConnection connection; // Globale Verbindung für die Klasse
         private string reportServerUrl; // Instanzvariable für ReportServer-URL
         private string reportPath;      // Instanzvariable für den Berichtspfad
+        private string reportServerDBName; // Name der ReportServer DB
+        private string reportPfad; // Name des ReportServer Pfades
         private bool rotationAktiv; // Kontrolliert die Rotation
 
         public FormWnetReportCreator()
@@ -45,6 +47,9 @@ namespace WnetLeisure
             //string trustServerCert = config["DatabaseSettings:trustServerCert"];
             // Weisen Sie die Konfigurationswerte den Instanzvariablen zu
             reportServerUrl = WnetLeisure.Properties.Settings.Default.ReportServer;
+            reportServerDBName = WnetLeisure.Properties.Settings.Default.ReportServerDBName;
+            reportPfad = WnetLeisure.Properties.Settings.Default.ReportPfad;
+
             // reportPath = config["ReportServerSettings:ReportPath"];
 
             // Verbindungszeichenfolge für SQL-Authentifizierung erstellen
@@ -89,7 +94,7 @@ namespace WnetLeisure
                 }
             }
         }
-        private void FuelleComboBoxReport()
+        private void FuelleComboBoxReport(string reportServerDBName)
         {
             // Sicherstellen, dass reportPath gesetzt ist
             if (string.IsNullOrEmpty(reportPath))
@@ -100,9 +105,9 @@ namespace WnetLeisure
 
             // SQL-Abfrage zum Abrufen aller Einträge aus der Tabelle ReportServer.dbo.Catalog,
             // aber nur aus dem dynamischen Ordner basierend auf reportPath und mit "Gruppe" oder "Group" im Namen
-            string query = @"
+            string query = $@"
                             SELECT Path 
-                            FROM [ReportServer].[dbo].[Catalog] 
+                            FROM [{reportServerDBName}].[dbo].[Catalog] 
                             WHERE Path LIKE @ReportPath
                             AND (
                                 (Path LIKE '%Gruppe%' OR Path LIKE '%Group%')
@@ -217,8 +222,8 @@ namespace WnetLeisure
                     if (response.IsSuccessStatusCode)
                     {
                         // Hole den Datenbanknamen aus der ComboBox (z.B. "wnet_DatenDB_19")
-                        string datenbankName = comboBoxDatenbanken.SelectedItem.ToString();
-
+                       // string datenbankName = comboBoxDatenbanken.SelectedItem.ToString();
+                        string wnetName = textBoxDBName.Text;
                         // Hole den vollständigen Pfad des ausgewählten Reports aus der ComboBox
                         string fullReportPath = comboBoxReport.SelectedItem.ToString();
 
@@ -237,7 +242,7 @@ namespace WnetLeisure
 
                         // Erstelle den Dateipfad mit dem Datenbanknamen und Reportnamen
                         string filePath = Path.Combine(reportsFolderPath,
-                                                       $"{datenbankName}_{DateTime.Now:yyyy-MM-dd}_{reportName}.xlsx");
+                                                       $"{wnetName}_{DateTime.Now:yyyy-MM-dd}_{reportName}.xlsx");
 
 
 
@@ -246,7 +251,7 @@ namespace WnetLeisure
                             await response.Content.CopyToAsync(fileStream);
                         }
 
-                        MessageBox.Show("Der Bericht wurde erfolgreich nach Excel exportiert und auf dem Desktop gespeichert.");
+                       // MessageBox.Show($"Der Bericht wurde erfolgreich nach {filePath} exportiert und gespeichert.");
                     }
                     else
                     {
@@ -312,10 +317,24 @@ namespace WnetLeisure
                 string suffix = datenbankName.Replace("wnet_DatenDB", ""); // z.B. "_19"
 
                 // Setze den ReportPath dynamisch basierend auf dem ausgewählten Datenbanknamen
-                reportPath = $"/WnetReports{suffix}/"; // z.B. "/WnetReports_19/"
+                if (WnetLeisure.Properties.Settings.Default.ignoreSuffix == true)
+                {
+                    // Entferne das erste Zeichen von 'suffix', falls vorhanden
+                    if (suffix.Length > 0)
+                    {
+                        string ignoreSuffix = suffix.Substring(1); // z.B. "19" aus "_19"
+                        reportPath = $"/WnetReports{ignoreSuffix}/"; // z.B. "/WnetReports_19/"
+                    }
 
+                }
+                else
+                {
+                    reportPath = $"/WnetReports{suffix}/"; // z.B. "/WnetReports_19/"
+                   // MessageBox.Show("Report Pfad:" + reportPath);
+                }
                 // Fülle die ComboBoxReport basierend auf dem angepassten ReportPath
-                FuelleComboBoxReport();
+                FuelleComboBoxReport(reportServerDBName);
+               // MessageBox.Show("RS DB Name:"+reportServerDBName);
 
                 // Setze textBoxDBName.Text auf den Wert aus der dynamisch erzeugten Datenbank
                 SetzeDatenbankKennung(suffix);
@@ -413,6 +432,57 @@ namespace WnetLeisure
                 dateTimePickerStart.Value = DateTime.Now;
                 dateTimePickerEnd.Value = DateTime.Now;
             }
+        }
+
+        private async void buttonBakingCleaningAll_Click(object sender, EventArgs e)
+        {
+            foreach (string datenbank in comboBoxDatenbanken.Items)
+            {
+                // Datenbank in der ComboBox auswählen
+                comboBoxDatenbanken.SelectedItem = datenbank;
+
+                // Stelle sicher, dass die Gruppen-ComboBox neu gefüllt wird
+                FuelleComboBoxGruppe();
+
+                // Überprüfe, ob die Gruppe "Alle Oefen" existiert
+                ComboBoxItem alleOefenGruppe = comboBoxGruppe.Items
+                    .Cast<ComboBoxItem>()
+                    .FirstOrDefault(g => g.Text == "Alle Oefen");
+
+                if (alleOefenGruppe == null)
+                {
+                    // Wenn die Gruppe "Alle Oefen" nicht existiert, überspringe die Datenbank
+                    MessageBox.Show($"Gruppe 'Alle Oefen' nicht in {datenbank} gefunden. Überspringe diese Datenbank.");
+                    continue;
+                }
+
+                // Setze die ausgewählte Gruppe auf "Alle Oefen"
+                comboBoxGruppe.SelectedItem = alleOefenGruppe;
+
+                // Reports aus der ComboBoxReport auswählen
+                var selectedReports = comboBoxReport.Items
+                    .Cast<string>()
+                    .Where(report => report.Contains("BackprogrammeProGruppe_german") || report.Contains("CleaningprogrammeProGruppe_german"))
+                    .ToList();
+
+                if (!selectedReports.Any())
+                {
+                    MessageBox.Show($"Keine passenden Berichte ('BackprogrammeProGruppe_german' oder 'CleaningprogrammeProGruppe_german') in ComboBoxReport für {datenbank} gefunden.");
+                    continue;
+                }
+
+                // Ausführung der ausgewählten Berichte
+                foreach (string reportPath in selectedReports)
+                {
+                    // Setze den Bericht in der ComboBox als ausgewählt
+                    comboBoxReport.SelectedItem = reportPath;
+
+                    // Berichte exportieren
+                    await ExportiereBerichtNachExcel(reportServerUrl, reportPath);
+                }
+            }
+
+            MessageBox.Show("Berichte für alle Datenbanken abgeschlossen.");
         }
 
 

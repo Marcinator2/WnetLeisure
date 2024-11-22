@@ -142,5 +142,41 @@ namespace WnetLeisure.Properties {
                 this["ReportSpeicherOrdner"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ReportServer")]
+        public string ReportServerDBName {
+            get {
+                return ((string)(this["ReportServerDBName"]));
+            }
+            set {
+                this["ReportServerDBName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WnetReports")]
+        public string ReportPfad {
+            get {
+                return ((string)(this["ReportPfad"]));
+            }
+            set {
+                this["ReportPfad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ignoreSuffix {
+            get {
+                return ((bool)(this["ignoreSuffix"]));
+            }
+            set {
+                this["ignoreSuffix"] = value;
+            }
+        }
     }
 }

@@ -47,6 +47,7 @@ namespace WnetLeisure
             checkBoxLetzterMonat = new CheckBox();
             checkBoxLetzteWoche = new CheckBox();
             pictureBoxLaden = new PictureBox();
+            buttonBakingCleaningAll = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLaden).BeginInit();
             SuspendLayout();
             // 
@@ -178,11 +179,22 @@ namespace WnetLeisure
             pictureBoxLaden.TabIndex = 14;
             pictureBoxLaden.TabStop = false;
             // 
+            // buttonBakingCleaningAll
+            // 
+            buttonBakingCleaningAll.Location = new Point(524, 294);
+            buttonBakingCleaningAll.Name = "buttonBakingCleaningAll";
+            buttonBakingCleaningAll.Size = new Size(200, 78);
+            buttonBakingCleaningAll.TabIndex = 15;
+            buttonBakingCleaningAll.Text = "Back- und Reinigungsreports von allen Datenbanken holen.\r\nAlle Öfen.";
+            buttonBakingCleaningAll.UseVisualStyleBackColor = true;
+            buttonBakingCleaningAll.Click += buttonBakingCleaningAll_Click;
+            // 
             // FormWnetReportCreator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonBakingCleaningAll);
             Controls.Add(pictureBoxLaden);
             Controls.Add(checkBoxLetzteWoche);
             Controls.Add(checkBoxLetzterMonat);
@@ -221,5 +233,6 @@ namespace WnetLeisure
         private CheckBox checkBoxLetzterMonat;
         private CheckBox checkBoxLetzteWoche;
         private PictureBox pictureBoxLaden;
+        private Button buttonBakingCleaningAll;
     }
 }

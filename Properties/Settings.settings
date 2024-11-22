@@ -32,5 +32,14 @@
     <Setting Name="ReportSpeicherOrdner" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ReportServerDBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ReportServer</Value>
+    </Setting>
+    <Setting Name="ReportPfad" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WnetReports</Value>
+    </Setting>
+    <Setting Name="ignoreSuffix" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

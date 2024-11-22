@@ -13,16 +13,18 @@ namespace WnetLeisure
 
         private void FormServerZugaenge_Load(object sender, EventArgs e)
         {
-        
-                // Sicherstellen, dass die letzten Einstellungen geladen werden
-                WnetLeisure.Properties.Settings.Default.Reload();
 
-                // Laden der Werte aus den gespeicherten Einstellungen in die Steuerelemente
+            // Sicherstellen, dass die letzten Einstellungen geladen werden
+            WnetLeisure.Properties.Settings.Default.Reload();
 
-                textBoxDBServer.Text = WnetLeisure.Properties.Settings.Default.SQLServer;
-                textBoxReportServer.Text = WnetLeisure.Properties.Settings.Default.ReportServer;
-                checkBoxServerCert.Checked = WnetLeisure.Properties.Settings.Default.trustServerCert;
-        
+            // Laden der Werte aus den gespeicherten Einstellungen in die Steuerelemente
+
+            textBoxDBServer.Text = WnetLeisure.Properties.Settings.Default.SQLServer;
+            textBoxReportServer.Text = WnetLeisure.Properties.Settings.Default.ReportServer;
+            checkBoxServerCert.Checked = WnetLeisure.Properties.Settings.Default.trustServerCert;
+            textBoxReportServerDBName.Text = WnetLeisure.Properties.Settings.Default.ReportServerDBName;
+            textBoxReportPfad.Text = WnetLeisure.Properties.Settings.Default.ReportPfad;
+            checkBoxReportsIgnore_Suffix.Checked = WnetLeisure.Properties.Settings.Default.ignoreSuffix;
 
         }
 
@@ -50,15 +52,20 @@ namespace WnetLeisure
         private void buttonDBSettingsSpeichern_Click(object sender, EventArgs e)
         {
 
-                // Speichere die Werte in den Einstellungen
+            // Speichere die Werte in den Einstellungen
 
-                WnetLeisure.Properties.Settings.Default.SQLServer = textBoxDBServer.Text;
-                WnetLeisure.Properties.Settings.Default.ReportServer = textBoxReportServer.Text;
-                WnetLeisure.Properties.Settings.Default.trustServerCert = checkBoxServerCert.Checked;
-                WnetLeisure.Properties.Settings.Default.Save();
-                MessageBox.Show("Einstellungen wurden gespeichert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            WnetLeisure.Properties.Settings.Default.SQLServer = textBoxDBServer.Text;
+            WnetLeisure.Properties.Settings.Default.ReportServer = textBoxReportServer.Text;
+            WnetLeisure.Properties.Settings.Default.trustServerCert = checkBoxServerCert.Checked;
+            WnetLeisure.Properties.Settings.Default.ReportServerDBName = textBoxReportServerDBName.Text;
+            WnetLeisure.Properties.Settings.Default.ReportPfad = textBoxReportPfad.Text;
+            WnetLeisure.Properties.Settings.Default.ignoreSuffix = checkBoxReportsIgnore_Suffix.Checked;
+            WnetLeisure.Properties.Settings.Default.Save();
+            MessageBox.Show("Einstellungen wurden gespeichert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
         }
+
+
     }
 }
