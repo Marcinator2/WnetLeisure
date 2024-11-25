@@ -43,6 +43,7 @@
             überWNETLeisuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnLIN = new System.Windows.Forms.Button();
             btnReportCreator = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -97,14 +98,14 @@
             // exclusiveIS600EToolStripMenuItem
             // 
             exclusiveIS600EToolStripMenuItem.Name = "exclusiveIS600EToolStripMenuItem";
-            exclusiveIS600EToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exclusiveIS600EToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             exclusiveIS600EToolStripMenuItem.Text = "Exclusive/IS600E";
             exclusiveIS600EToolStripMenuItem.Click += exclusiveIS600EToolStripMenuItem_Click;
             // 
             // wtouchToolStripMenuItem
             // 
             wtouchToolStripMenuItem.Name = "wtouchToolStripMenuItem";
-            wtouchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            wtouchToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             wtouchToolStripMenuItem.Text = "Wtouch";
             wtouchToolStripMenuItem.Click += wtouchToolStripMenuItem_Click;
             // 
@@ -164,6 +165,17 @@
             btnReportCreator.UseVisualStyleBackColor = true;
             btnReportCreator.Click += btnReportCreator_Click;
             // 
+            // button1
+            // 
+            button1.Location = new System.Drawing.Point(14, 117);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(147, 67);
+            button1.TabIndex = 5;
+            button1.Text = "Wtouch Konfi Manager";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -173,6 +185,7 @@
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             CausesValidation = false;
             ClientSize = new System.Drawing.Size(687, 378);
+            Controls.Add(button1);
             Controls.Add(btnReportCreator);
             Controls.Add(btnLIN);
             Controls.Add(btnPort);
@@ -208,6 +221,7 @@
         private System.Windows.Forms.Button btnLIN;
         private System.Windows.Forms.Button btnReportCreator;
         private System.Windows.Forms.ToolStripMenuItem serverZugängeToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
 

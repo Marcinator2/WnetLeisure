@@ -104,13 +104,15 @@ namespace WnetLeisure
 
         private void zugaengeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-     
+
 
         }
 
-        
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormWtouchKonfiManager formWtouchKonfiManager = new FormWtouchKonfiManager();
+            formWtouchKonfiManager.Show();
+        }
     }
 
 }
