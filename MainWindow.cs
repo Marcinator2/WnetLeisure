@@ -2,6 +2,8 @@
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using WnetLeisure;
+using System.Drawing;
 
 
 namespace WnetLeisure
@@ -11,9 +13,11 @@ namespace WnetLeisure
         public MainWindow()
         {
             InitializeComponent();
+
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
+
 
         }
 
@@ -112,6 +116,15 @@ namespace WnetLeisure
         {
             FormWtouchKonfiManager formWtouchKonfiManager = new FormWtouchKonfiManager();
             formWtouchKonfiManager.Show();
+        }
+
+        private void buttonDatenbankenLaden_Click(object sender, EventArgs e)
+        {
+            // Instanz der Klasse erstellen
+            ButtonDatenbankenLaden ButtonDatenbankenLaden = new ButtonDatenbankenLaden();
+
+            // Methode aufrufen und das FlowLayoutPanel übergeben
+            ButtonDatenbankenLaden.FillFlowLayoutPanel(flowLayoutPanelServerUebersicht);
         }
     }
 
