@@ -25,6 +25,7 @@ namespace WnetLeisure
             textBoxReportServerDBName.Text = WnetLeisure.Properties.Settings.Default.ReportServerDBName;
             textBoxReportPfad.Text = WnetLeisure.Properties.Settings.Default.ReportPfad;
             checkBoxReportsIgnore_Suffix.Checked = WnetLeisure.Properties.Settings.Default.ignoreSuffix;
+            textBoxTimeOutReportServer.Text = WnetLeisure.Properties.Settings.Default.TimeOutReportServer.ToString();
 
         }
 
@@ -60,6 +61,7 @@ namespace WnetLeisure
             WnetLeisure.Properties.Settings.Default.ReportServerDBName = textBoxReportServerDBName.Text;
             WnetLeisure.Properties.Settings.Default.ReportPfad = textBoxReportPfad.Text;
             WnetLeisure.Properties.Settings.Default.ignoreSuffix = checkBoxReportsIgnore_Suffix.Checked;
+            WnetLeisure.Properties.Settings.Default.TimeOutReportServer = int.Parse(textBoxTimeOutReportServer.Text);
             WnetLeisure.Properties.Settings.Default.Save();
             MessageBox.Show("Einstellungen wurden gespeichert.", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

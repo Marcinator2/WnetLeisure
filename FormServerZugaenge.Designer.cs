@@ -45,6 +45,9 @@
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             checkBoxReportsIgnore_Suffix = new System.Windows.Forms.CheckBox();
+            label8 = new System.Windows.Forms.Label();
+            textBoxTimeOutReportServer = new System.Windows.Forms.TextBox();
+            label9 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // label1
@@ -112,7 +115,7 @@
             // textBoxReportsSpeichern
             // 
             textBoxReportsSpeichern.Enabled = false;
-            textBoxReportsSpeichern.Location = new System.Drawing.Point(154, 168);
+            textBoxReportsSpeichern.Location = new System.Drawing.Point(154, 199);
             textBoxReportsSpeichern.Name = "textBoxReportsSpeichern";
             textBoxReportsSpeichern.Size = new System.Drawing.Size(226, 23);
             textBoxReportsSpeichern.TabIndex = 8;
@@ -120,7 +123,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(10, 171);
+            label3.Location = new System.Drawing.Point(10, 202);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(135, 15);
             label3.TabIndex = 7;
@@ -180,18 +183,46 @@
             // checkBoxReportsIgnore_Suffix
             // 
             checkBoxReportsIgnore_Suffix.AutoSize = true;
-            checkBoxReportsIgnore_Suffix.Location = new System.Drawing.Point(521, 134);
+            checkBoxReportsIgnore_Suffix.Location = new System.Drawing.Point(154, 164);
             checkBoxReportsIgnore_Suffix.Name = "checkBoxReportsIgnore_Suffix";
-            checkBoxReportsIgnore_Suffix.Size = new System.Drawing.Size(150, 19);
+            checkBoxReportsIgnore_Suffix.Size = new System.Drawing.Size(180, 19);
             checkBoxReportsIgnore_Suffix.TabIndex = 15;
-            checkBoxReportsIgnore_Suffix.Text = "\"_\" Bei Suffix ignorieren";
+            checkBoxReportsIgnore_Suffix.Text = "\"_\" Bei Suffix ignorieren (Lidl)";
             checkBoxReportsIgnore_Suffix.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(359, 165);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(154, 15);
+            label8.TabIndex = 16;
+            label8.Text = "Timeout Berichts Erstellung:";
+            // 
+            // textBoxTimeOutReportServer
+            // 
+            textBoxTimeOutReportServer.Location = new System.Drawing.Point(519, 162);
+            textBoxTimeOutReportServer.Name = "textBoxTimeOutReportServer";
+            textBoxTimeOutReportServer.Size = new System.Drawing.Size(69, 23);
+            textBoxTimeOutReportServer.TabIndex = 17;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(594, 165);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(52, 15);
+            label9.TabIndex = 18;
+            label9.Text = "Minuten";
             // 
             // FormServerZugaenge
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(774, 203);
+            ClientSize = new System.Drawing.Size(774, 251);
+            Controls.Add(label9);
+            Controls.Add(textBoxTimeOutReportServer);
+            Controls.Add(label8);
             Controls.Add(checkBoxReportsIgnore_Suffix);
             Controls.Add(label7);
             Controls.Add(textBoxReportPfad);
@@ -234,5 +265,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxReportsIgnore_Suffix;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxTimeOutReportServer;
+        private System.Windows.Forms.Label label9;
     }
 }

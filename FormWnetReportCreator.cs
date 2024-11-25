@@ -202,6 +202,7 @@ namespace WnetLeisure
             string endDate = dateTimePickerEnd.Value.ToString("yyyy/MM/dd");
             ComboBoxItem selectedGroup = (ComboBoxItem)comboBoxGruppe.SelectedItem;
             string groupId = selectedGroup?.Value;
+            int timeOutReportServer = WnetLeisure.Properties.Settings.Default.TimeOutReportServer;// Zeit in Minuten
 
             if (groupId == null)
             {
@@ -212,11 +213,14 @@ namespace WnetLeisure
 
             string reportUrl = $"{reportServerUrl}?{selectedReport}&KId={groupId}&Start={startDate}&End={endDate}&rs:Format=EXCELOPENXML";
 
+
             try
             {
                 using (HttpClientHandler handler = new HttpClientHandler { UseDefaultCredentials = true })
                 using (HttpClient client = new HttpClient(handler))
                 {
+                    // Timeout auf z. B. 10 Minuten (600 Sekunden) erhöhen
+                    client.Timeout = TimeSpan.FromMinutes(timeOutReportServer);
                     HttpResponseMessage response = await client.GetAsync(reportUrl);
 
                     if (response.IsSuccessStatusCode)

@@ -178,5 +178,17 @@ namespace WnetLeisure.Properties {
                 this["ignoreSuffix"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int TimeOutReportServer {
+            get {
+                return ((int)(this["TimeOutReportServer"]));
+            }
+            set {
+                this["TimeOutReportServer"] = value;
+            }
+        }
     }
 }
