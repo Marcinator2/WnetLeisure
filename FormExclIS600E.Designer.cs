@@ -29,84 +29,84 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExclIS600E));
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtbxUser = new System.Windows.Forms.TextBox();
-            this.txtbxPW = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            btnOK = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            txtbxUser = new System.Windows.Forms.TextBox();
+            txtbxPW = new System.Windows.Forms.TextBox();
+            SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(80, 104);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(112, 32);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "Speichern";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            btnOK.Location = new System.Drawing.Point(70, 98);
+            btnOK.Name = "btnOK";
+            btnOK.Size = new System.Drawing.Size(98, 30);
+            btnOK.TabIndex = 0;
+            btnOK.Text = "Speichern";
+            btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(200, 104);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(104, 32);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Abbrechen";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new System.Drawing.Point(175, 98);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(91, 30);
+            btnCancel.TabIndex = 1;
+            btnCancel.Text = "Abbrechen";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nutzername:";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(63, 22);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(75, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Nutzername:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Passwort:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(84, 52);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(57, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Passwort:";
             // 
             // txtbxUser
             // 
-            this.txtbxUser.Location = new System.Drawing.Point(168, 24);
-            this.txtbxUser.Name = "txtbxUser";
-            this.txtbxUser.Size = new System.Drawing.Size(136, 22);
-            this.txtbxUser.TabIndex = 4;
+            txtbxUser.Location = new System.Drawing.Point(147, 22);
+            txtbxUser.Name = "txtbxUser";
+            txtbxUser.Size = new System.Drawing.Size(120, 23);
+            txtbxUser.TabIndex = 4;
             // 
             // txtbxPW
             // 
-            this.txtbxPW.Location = new System.Drawing.Point(168, 56);
-            this.txtbxPW.Name = "txtbxPW";
-            this.txtbxPW.Size = new System.Drawing.Size(136, 22);
-            this.txtbxPW.TabIndex = 5;
+            txtbxPW.Location = new System.Drawing.Point(147, 52);
+            txtbxPW.Name = "txtbxPW";
+            txtbxPW.Size = new System.Drawing.Size(120, 23);
+            txtbxPW.TabIndex = 5;
+            txtbxPW.UseSystemPasswordChar = true;
             // 
             // FormExclIS600E
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 165);
-            this.Controls.Add(this.txtbxPW);
-            this.Controls.Add(this.txtbxUser);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormExclIS600E";
-            this.Text = "Exclusive / IS600E Zugang";
-            this.Load += new System.EventHandler(this.FormExclIS600E_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(346, 155);
+            Controls.Add(txtbxPW);
+            Controls.Add(txtbxUser);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(btnCancel);
+            Controls.Add(btnOK);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Name = "FormExclIS600E";
+            Text = "Exclusive / IS600E Zugang";
+            Load += FormExclIS600E_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

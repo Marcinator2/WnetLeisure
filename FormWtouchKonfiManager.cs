@@ -281,45 +281,7 @@ namespace WnetLeisure
                 // Platzhalter-Zeile hinzufügen (das Bild wird später asynchron geladen)
                 int rowIndex = dataGridView.Rows.Add(programName, programType, iconFileName, UUID);
 
-                // Bild asynchron laden
-                _ = Task.Run(async () =>
-                {
-                    try
-                    {
-                        string urlBackprogrammBild = $"https://{ipWtouch}:{Port}/api/v1/internal/{iconFileName}?path=%2F";
-
-                        using (HttpClientHandler handler = new HttpClientHandler())
-                        {
-                            // Ignoriere Zertifikatsfehler (z.B. bei selbstsignierten Zertifikaten)
-                            handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-
-                            using (HttpClient client = new HttpClient(handler))
-                            {
-                                HttpResponseMessage response = await client.GetAsync(urlBackprogrammBild);
-                                response.EnsureSuccessStatusCode();
-
-                                using (Stream stream = await response.Content.ReadAsStreamAsync())
-                                {
-                                    Image image = Image.FromStream(stream);
-
-                                    // Bild in der entsprechenden Zeile aktualisieren
-                                    this.Invoke((Action)(() =>
-                                    {
-                                        dataGridView.Rows[rowIndex].Cells["IconFile"].Value = image;
-                                    }));
-                                }
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Fehlerbehandlung (z.B. Platzhalterbild anzeigen oder Log-Eintrag erstellen)
-                        this.Invoke((Action)(() =>
-                        {
-                          //  dataGridView.Rows[rowIndex].Cells["IconFile"].Value = Properties.Resources.PlaceholderImage; // Optional: Platzhalterbild
-                        }));
-                    }
-                });
+      
             }
 
             // DataGridView zur TabPage hinzufügen

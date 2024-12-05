@@ -80,7 +80,7 @@ namespace WnetLeisure
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(992, 24);
+            menuStrip1.Size = new Size(797, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -182,9 +182,11 @@ namespace WnetLeisure
             // 
             // flowLayoutPanelServerUebersicht
             // 
+            flowLayoutPanelServerUebersicht.AutoScroll = true;
+            flowLayoutPanelServerUebersicht.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             flowLayoutPanelServerUebersicht.Location = new Point(14, 152);
             flowLayoutPanelServerUebersicht.Name = "flowLayoutPanelServerUebersicht";
-            flowLayoutPanelServerUebersicht.Size = new Size(966, 339);
+            flowLayoutPanelServerUebersicht.Size = new Size(767, 339);
             flowLayoutPanelServerUebersicht.TabIndex = 6;
             // 
             // buttonDatenbankenLaden
@@ -203,10 +205,9 @@ namespace WnetLeisure
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            BackgroundImage = Properties.Resources.W_NETLeisureohneBG;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             CausesValidation = false;
-            ClientSize = new Size(992, 503);
+            ClientSize = new Size(797, 503);
             Controls.Add(buttonDatenbankenLaden);
             Controls.Add(flowLayoutPanelServerUebersicht);
             Controls.Add(button1);
